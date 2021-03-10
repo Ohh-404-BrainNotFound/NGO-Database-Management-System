@@ -4,7 +4,7 @@ var sql = require('mysql');
 var con = sql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Hariom123@',
+  password: 'password',
   database: 'ngo'
 });
 
