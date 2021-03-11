@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
-
+const loginRouter  = require("./routes/login")
 
 var app = express();
 
@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.static('public'));
 
 app.use('/',landingRouter)
-
+app.use('/login',loginRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
