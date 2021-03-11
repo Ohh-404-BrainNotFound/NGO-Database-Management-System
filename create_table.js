@@ -1,11 +1,13 @@
 const express = require('express');
 var sql = require('mysql');
+require('dotenv').config();
 
 var con = sql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'password',
-  database: 'ngo'
+  host: 'sql6.freemysqlhosting.net',
+  user: process.env.user,
+  password: process.env.password,
+  database: 'sql6398126',
+  port:3306
 });
 
 con.connect(function(err) {
