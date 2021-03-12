@@ -87,7 +87,7 @@ container.classList.remove("right-panel-active");
 
         }
 
-        function fun2()
+        async function fun2()
         {
             
             var pass1 = document.getElementById("pass1").value;
@@ -105,11 +105,11 @@ container.classList.remove("right-panel-active");
         else{
             //return true;
             alert('reached');
-            const xml=new XMLHttpRequest();
-            const url="signup";
+            const xml = new XMLHttpRequest();
+            const url = "/signup";
             xml.open('POST',url,true);
-            xml.setRequestHeader("content-type",'application/json');
-            xml.send(JSON.stringify(
+            await xml.setRequestHeader("content-type",'application/json');
+           var ob1 = await xml.send(JSON.stringify(
                 {
                 name:name,
                 pass:pass1,
