@@ -28,6 +28,12 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+app.post('/login/signup',(req,res)=>{
+alert('Reached app');
+})
+app.get("/signup",(req,res)=>{
+  alert('Reached get app');
+})
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
