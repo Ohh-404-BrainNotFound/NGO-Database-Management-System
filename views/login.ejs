@@ -82,36 +82,41 @@
         } else {
             return true;
         }
-
     }
 
-    function fun2() {
-
-        var pass1 = document.getElementById("pass1").value;
-        var pass2 = document.getElementById("pass2").value;
-        var name = document.getElementById("name").value;
-        var email = document.getElementById("email").value;
-        var passw = document.getElementById("pass1").value;
-       /* if (name.trim() == "" || email.trim() == "" || passw.trim() == "") {
-            alert("Empty name or email or password");
-        } else if (pass1 != pass2) {
-            alert("Password do not match")
-        } else {*/
+        async function fun2()
+        {
+            
+            var pass1 = document.getElementById("pass1").value;
+            var pass2 = document.getElementById("pass2").value;
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var passw = document.getElementById("pass1").value;
+            if( name.trim()=="" || email.trim()=="" || passw.trim() == "")
+            {
+                alert("Empty name or email or password");
+            }    
+        else if( pass1 != pass2) { 
+            alert ("Password do not match")
+            }
+        else{
             //return true;
+            alert('reached');
             const xml = new XMLHttpRequest();
             const url = "/signup";
-            xml.open('POST', url, true);
-            xml.setRequestHeader("content-type", 'application/json');
-            xml.send(JSON.stringify({
-                name: name,
-                pass: pass1,
-                email: email,
-                number: document.getElementById("phoneNumber").value || ""
-            }));
-            window.location.href="/signup";
-        //}
-
-    }
+            xml.open('POST',url,true);
+            await xml.setRequestHeader("content-type",'application/json');
+           var ob1 = await xml.send(JSON.stringify(
+                {
+                name:name,
+                pass:pass1,
+                email:email,
+                number:document.getElementById("phoneNumber").value||""
+                }
+            ));
+        }
+        
+        }
 </script>
 
 </html>
