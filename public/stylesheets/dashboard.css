@@ -71,11 +71,12 @@
 }
 .menu__elements {
     margin-top: 5%;
+    width: 15vw;
 }
 
 .menu__elements > h1 {
     color: white;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: lighter;
     font-family: "montserrat";
 }

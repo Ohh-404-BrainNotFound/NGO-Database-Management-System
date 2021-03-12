@@ -31,6 +31,10 @@
     padding: 10px 8%;
     background-image: linear-gradient(to right, #012342 , #A73AA2);
   }
+  nav {
+    display: block;
+    margin: auto;
+  }
   
   .care {
     font-family: 'montserrat';
@@ -42,7 +46,6 @@
   .nav__links {
     list-style: none;
     text-align: center;
-  
   }
   
   .nav__links li {
