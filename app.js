@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const loginRouter  = require("./routes/login")
 const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
+const signup=require('./routes/signup.js');
 var app = express();
 
 // view engine setup
@@ -24,6 +25,7 @@ app.use('/',landingRouter)
 app.use('/login',loginRouter);
 app.use('/form',structureDb);
 app.use('/dashboard',dashboardRouter);
+app.use("/signup",signup);
 app.use(function(req, res, next) {
   next(createError(404));
 });

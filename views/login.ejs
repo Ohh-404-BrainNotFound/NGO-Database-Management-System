@@ -8,24 +8,24 @@
     <h2>Small charities can bring bigger impacts.</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form onsubmit="return fun2()" action="#">
+		<form>
 			<h1>Create Account</h1>
 			<input id="name" type="text" placeholder="Name" />
-            <input type="intiger" placeholder="Contact Number(optional)">
+            <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
 			<input id="email" type="email" placeholder="Email" />
 			<input id="pass1" type="password" placeholder="Password" />
             <input id="pass2" type="password" placeholder="Rewrite Password" />
-			<button>Sign Up</button>
+			<button type="submit" onclick="fun2()">Sign Up</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form onsubmit="return fun1()" action="#">
+		<form onsubmit="return fun1()">
 			<h3>Sign in</h3>
 			<input id="username" type="id" placeholder="Username" />
 			<input id="password" type="password" placeholder="Password" />
-            <label id="label" style="color: red;  visibility : hidden" >Invalid</label>
+            <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
 	<div class="overlay-container">
@@ -49,6 +49,7 @@
 <footer>
 	<p>
 		Join with <b>NGO</b> and  <b>Help someone’s dream come true </b>
+        </p>
 </footer>
 </body>
 
@@ -88,12 +89,13 @@ container.classList.remove("right-panel-active");
 
         function fun2()
         {
+            
             var pass1 = document.getElementById("pass1").value;
             var pass2 = document.getElementById("pass2").value;
-            var name = document.getElementById("name");
-            var email = document.getElementById("email");
-            var passw = document.getElementById("pass1");
-            if( name.value.trim()=="" || email.value.trim()=="" || passw.value.trim() == "")
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var passw = document.getElementById("pass1").value;
+            if( name.trim()=="" || email.trim()=="" || passw.trim() == "")
             {
                 alert("Empty name or email or password");
             }    
@@ -101,10 +103,24 @@ container.classList.remove("right-panel-active");
             alert ("Password do not match")
             }
         else{
-            return true;
+            //return true;
+            alert('reached');
+            const xml=new XMLHttpRequest();
+            const url="signup";
+            xml.open('POST',url,true);
+            xml.setRequestHeader("content-type",'application/json');
+            xml.send(JSON.stringify(
+                {
+                name:name,
+                pass:pass1,
+                email:email,
+                number:document.getElementById("phoneNumber").value||""
+                }
+            ));
         }
+        
         }
 
 
 </script>
-</html>
+</html> 
