@@ -7,6 +7,7 @@ const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
 const loginRouter  = require("./routes/login")
 const structureDb = require('./routes/createTable')
+const dashboardRouter = require('./routes/dashboard')
 var app = express();
 
 // view engine setup
@@ -22,6 +23,7 @@ app.use(express.static('public'));
 app.use('/',landingRouter)
 app.use('/login',loginRouter);
 app.use('/form',structureDb);
+app.use('/dashboard',dashboardRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
