@@ -12,19 +12,19 @@
         <div class="form-container sign-up-container">
             <form>
                 <h1>Create Account</h1>
-                <input id="name" type="text" placeholder="Name" />
+                <input id="name" type="text" placeholder="Name" required />
                 <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
-                <input id="email" type="email" placeholder="Email" />
-                <input id="pass1" type="password" placeholder="Password" />
-                <input id="pass2" type="password" placeholder="Rewrite Password" />
+                <input id="email" type="email" placeholder="Email" required />
+                <input id="pass1" type="password" placeholder="Password" required />
+                <input id="pass2" type="password" placeholder="Rewrite Password"  required/>
                 <button type="submit" onclick="fun2()" style="cursor:pointer;">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
             <form onsubmit="return fun1()">
                 <h3>Sign in</h3>
-                <input id="username" type="id" placeholder="Username" />
-                <input id="password" type="password" placeholder="Password" />
+                <input id="username" type="id" placeholder="Username" required />
+                <input id="password" type="password" placeholder="Password" required />
                 <label id="label" style="color: red;  visibility : hidden">Invalid Password</label>
                 <a href="#">Forgot your password?</a>
                 <button type="submit" style="cursor:pointer;">Sign In</button>
@@ -86,22 +86,10 @@
 
         async function fun2()
         {
-            
-            var pass1 = document.getElementById("pass1").value;
-            var pass2 = document.getElementById("pass2").value;
-            var name = document.getElementById("name").value;
-            var email = document.getElementById("email").value;
-            var passw = document.getElementById("pass1").value;
-            if( name.trim()=="" || email.trim()=="" || passw.trim() == "")
-            {
-                alert("Empty name or email or password");
-            }    
-        else if( pass1 != pass2) { 
+            if( pass1 != pass2) { 
             alert ("Password do not match")
             }
         else{
-            //return true;
-            alert('reached');
             const xml = new XMLHttpRequest();
             const url = "/signup";
             xml.open('POST',url,true);

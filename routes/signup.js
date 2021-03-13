@@ -1,12 +1,12 @@
-const express=require('express');
-const sql=require('mysql');
-const router=express.Router();
+var express=require('express');
+var sql=require('mysql');
+var router=express.Router();
 
-router.post("/",(req,res)=>{
+router.post("/",(req,res,next)=>{
     console.log("data",req.body)
     console.log('Checking Data');
     console.log('req');
-    res.send("<h1>f</h1>")
+    res.render('frontpage',{});
 });
 router.get("/",(req,res)=>{
     res.send('reached');
