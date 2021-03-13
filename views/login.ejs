@@ -8,25 +8,29 @@
     <h2>Small charities can bring bigger impacts.</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form>
+		<!-- <form> -->
+            <div class="form">
 			<h1>Create Account</h1>
 			<input id="name" type="text" placeholder="Name" />
             <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
 			<input id="email" type="email" placeholder="Email" />
 			<input id="pass1" type="password" placeholder="Password" />
             <input id="pass2" type="password" placeholder="Rewrite Password" />
-			<button type="submit" onclick="fun2()">Sign Up</button>
-		</form>
+			<button onclick="fun2()">Sign Up</button>
+            </div>
+		<!-- </form> -->
 	</div>
 	<div class="form-container sign-in-container">
-		<form onsubmit="return fun1()">
+		<!-- <form onsubmit="return fun1()"> -->
+            <div class="form">
 			<h3>Sign in</h3>
 			<input id="username" type="id" placeholder="Username" />
 			<input id="password" type="password" placeholder="Password" />
             <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
 			<button type="submit">Sign In</button>
-		</form>
+            </div>
+		<!-- </form> -->
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
