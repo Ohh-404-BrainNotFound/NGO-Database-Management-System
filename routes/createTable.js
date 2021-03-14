@@ -11,7 +11,6 @@ var con = sql.createConnection({
   });
   
 
-/* GET users listing. */
 router.get('/', async function(req, res, next) {
  await  con.connect(async function(err) {
     if (err) throw err;
@@ -20,7 +19,7 @@ router.get('/', async function(req, res, next) {
     await con.query(sql, function (err, result) {
       if (err) throw err;
       console.log("Table created");
-  });
+    });
   });
 });
 

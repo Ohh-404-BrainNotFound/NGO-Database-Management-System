@@ -9,6 +9,8 @@ const loginRouter  = require("./routes/login")
 const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
 const signupRouter=require('./routes/signup');
+const memberRouter = require('./routes/member')
+
 var app = express();
 
 // view engine setup
@@ -26,6 +28,7 @@ app.use('/login',loginRouter);
 app.use('/form',structureDb);
 app.use('/dashboard',dashboardRouter);
 app.use("/signup",signupRouter);
+app.use('/members',memberRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
