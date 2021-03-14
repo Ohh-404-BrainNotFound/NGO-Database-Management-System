@@ -8,45 +8,47 @@
 
 <body>
     <h2>Small charities can bring bigger impacts.</h2>
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form>
-                <h1>Create Account</h1>
-                <input id="name" type="text" placeholder="Name" required />
-                <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
-                <input id="email" type="email" placeholder="Email" required />
-                <input id="pass1" type="password" placeholder="Password" required />
-                <input id="pass2" type="password" placeholder="Rewrite Password"  required/>
-                <button type="submit" onclick="fun2()" style="cursor:pointer;">Sign Up</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form onsubmit="return fun1()">
-                <h3>Sign in</h3>
-                <input id="username" type="id" placeholder="Username" required />
-                <input id="password" type="password" placeholder="Password" required />
-                <label id="label" style="color: red;  visibility : hidden">Invalid Password</label>
-                <a href="#">Forgot your password?</a>
-                <button type="submit" style="cursor:pointer;">Sign In</button>
-            </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <br><br><br>
-                    <h1>Don’t delay give today!</h1>
-                    <br><br>
-                    <button class="ghost" id="signIn" style="cursor:pointer;">Sign In</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <br><br><br><br><br>
-                    <h1>Participate in changing the world.</h1>
-                    <br><br><br><br>
-                    <button class="ghost" id="signUp" style="cursor:pointer;">Sign Up</button>
-                </div>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+            <div class="form">
+			<h1>Create Account</h1>
+			<input id="name" type="text" placeholder="Name" />
+            <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
+			<input id="email" type="email" placeholder="Email" />
+			<input id="pass1" type="password" placeholder="Password" />
+            <input id="pass2" type="password" placeholder="Rewrite Password" />
+			<button onclick="fun2()">Sign Up</button>
             </div>
-        </div>
-    </div>
+
+	</div>
+	<div class="form-container sign-in-container">
+		
+            <div class="form">
+			<h3>Sign in</h3>
+			<input id="username" type="id" placeholder="Username" />
+			<input id="password" type="password" placeholder="Password" />
+            <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
+			<a href="#">Forgot your password?</a>
+			<button type="submit">Sign In</button>
+            </div>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<br><br><br>
+                <h1>Don’t delay give today!</h1>
+				<br><br>
+                <button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+                <br><br><br><br><br>
+				<h1>Participate in changing the world.</h1>
+                <br><br><br><br>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
 
     <footer>
         <p>
