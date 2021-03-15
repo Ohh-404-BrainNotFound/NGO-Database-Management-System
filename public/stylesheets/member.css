@@ -1,0 +1,43 @@
+.member__container {
+    margin-left: 24%;
+    margin-top: -47%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 70%;
+}
+
+.member {
+    width: 300px;
+    height: 100px;
+    background-color: #11254B;
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;  
+}
+
+.member__card {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.member__details {
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.member__details > h1 {
+    font-weight: 100;
+    font-size: 20px;
+}
+
+.member__details > h2 {
+    font-weight: bold;
+}

@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    width: 100%;
+    width: 20%;
     height: 100vh;
 }
 .nav__container {
-    width: 25%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,6 +22,7 @@
     margin-top: 5%;
     color: white;
     font-family: "montserrat";
+    font-size: 30px;
     font-style: italic;
     font-weight: normal;
 }

@@ -1,0 +1,65 @@
+/*wrtie css here */
+.donor_table {
+    margin-top: -53%;
+    margin-left: 25%;
+}
+.header
+{
+    margin-top: 80px;
+    margin-left: 100px;
+    color: white;
+    font-style: italic;     
+}
+
+.border
+{
+    margin-top: 10px;
+    border-bottom:  #A73A7B 0.5px solid;
+}
+.border1
+{
+    margin-top: 1px;
+    text-align: start;
+    color: rgb(198, 212, 230);
+    font-style: inherit;
+    border-bottom:  #a55547 1px solid;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+.border2
+{
+    margin-top: 1px;
+    text-align: center;
+    color: rgb(198, 212, 230);
+    font-style: inherit;
+    border-bottom:  #a55547 1px solid;
+    border-radius: 20px;
+}
+
+.table
+{
+    margin-left: 50px;
+}
+
+#table_heading
+{
+    font-size: 35px;
+    margin-top: 30px;
+    color: rgba(255, 255, 255, 0.795);
+}
+
+
+th, td {
+    padding: 10px;
+    font-style:oblique;
+  }
+
+.profile_image{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
