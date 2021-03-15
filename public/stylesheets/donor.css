@@ -1,9 +1,14 @@
 /*wrtie css here */
+.donor_table {
+    margin-top: -53%;
+    margin-left: 25%;
+}
 .header
 {
     margin-top: 80px;
     margin-left: 100px;
-    color: white;     
+    color: white;
+    font-style: italic;     
 }
 
 .border
@@ -19,6 +24,11 @@
     font-style: inherit;
     border-bottom:  #a55547 1px solid;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
 }
 .border2
 {

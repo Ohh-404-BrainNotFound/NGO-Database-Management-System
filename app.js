@@ -10,6 +10,7 @@ const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
 const signupRouter=require('./routes/signup');
 const memberRouter = require('./routes/member')
+const donorRouter = require('./routes/donor')
 
 var app = express();
 
@@ -29,6 +30,8 @@ app.use('/form',structureDb);
 app.use('/dashboard',dashboardRouter);
 app.use("/signup",signupRouter);
 app.use('/members',memberRouter);
+app.use('/donors',donorRouter);
+
 app.use(function(req, res, next) {
   next(createError(404));
 });
