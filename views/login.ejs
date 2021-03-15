@@ -9,18 +9,19 @@
 <body>
     <h2>Small charities can bring bigger impacts.</h2>
 <div class="container" id="container">
-	<div class="form-container sign-up-container">
+	<div class="form-container sign-up-container" style="overflow: auto;">
             <div class="form">
 			<h1>Create Account</h1>
-            <input id="name" type="text" placeholder="Name" />
 			<input id="fname" type="text" placeholder="fName" />
             <input id="lname" type="text" placeholder="lName" />
-            <input type="number" placeholder="Contact Number(optional)" id="phoneNumber">
-            <input type="checkbox">
-    
+            <input type="tel" placeholder="Contact Number" id="phoneNumber" placeholder="01234-56789" pattern="[0-9]{5}-[0-9]{5}">
+            <input type="radio" name="login_type" value="user" checked>User
+            <input type="radio" name="login_type" value="donator"> Donator  
 			<input id="email" type="email" placeholder="Email" />
 			<input id="pass1" type="password" placeholder="Password" />
             <input id="pass2" type="password" placeholder="Rewrite Password" />
+            <input type="date" id="mydate"> 
+            <input type="text" placeholder="Enter Address" id="address">
 			<button onclick="fun2()"  style="cursor:pointer;">Sign Up</button>
             </div>
 	</div>
@@ -60,6 +61,10 @@
 </body>
 
 <script>
+
+    window.onload=()=>{
+        document.getElementById('mydate').value=new Date().toISOString().substr(0,10);
+    }
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
@@ -90,11 +95,19 @@
 
         async function fun2()
         {
-            var pass1=document.getElementById('pass1').value;
-            var pass2=document.getElementById('pass2').value;
-            var name=document.getElementById('name').value;
-            var email=document.getElementById('email').value;
-            if( pass1 != pass2) { 
+            var pass1=document.getElementById('pass1');
+            var pass2=document.getElementById('pass2');
+            var fname=document.getElementById('fname');
+            var lname=document.getElementById('lname');
+            var email=document.getElementById('email');
+            var login_type=document.getElementsByName('login_type').value;
+            var date=document.getElementById('mydate').value;
+            var address=document.getElementById('address');
+            var contact=document.getElementById('phoneNumber');
+            
+            if(pass1==""||pass2==""||fname==""||lname==""||email==""||contact==""||address=='')
+            alert("Enter Values ");
+            else if( pass1 != pass2) { 
             alert ("Passwords do not match")
             }
         else{
@@ -104,10 +117,14 @@
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify(
                 {
-                name:name,
-                pass:pass1,
-                email:email,
-                number:document.getElementById("phoneNumber").value||""
+                fname:fname.value,
+                lname:lname.value,
+                pass:pass1.value,
+                email:email.value,
+                login_type:login_type,
+                number:contact.value,
+                date:date,
+                address:address.value;
                 }
             ));
             window.location.href="/";
