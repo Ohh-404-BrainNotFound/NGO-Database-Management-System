@@ -12,14 +12,14 @@
 	<div class="form-container sign-up-container" style="overflow: auto;">
             <div class="form">
 			<h1>Create Account</h1>
-			<input id="fname" type="text" placeholder="fName" />
-            <input id="lname" type="text" placeholder="lName" />
-            <input type="tel" placeholder="Contact Number" id="phoneNumber" placeholder="01234-56789" pattern="[0-9]{5}-[0-9]{5}">
+			<input id="fname" type="text" placeholder="fName">
+            <input id="lname" type="text" placeholder="lName" >
+            <input type="tel" placeholder="Contact Number" id="phoneNumber" placeholder="01234-56789" pattern="[0-9]{5}-[0-9]{5}" >
             <input type="radio" name="login_type" value="user" checked>User
             <input type="radio" name="login_type" value="donator"> Donator  
-			<input id="email" type="email" placeholder="Email" />
-			<input id="pass1" type="password" placeholder="Password" />
-            <input id="pass2" type="password" placeholder="Rewrite Password" />
+			<input id="email" type="email" placeholder="Email" >
+			<input id="pass1" type="password" placeholder="Password" >
+            <input id="pass2" type="password" placeholder="Rewrite Password" >
             <input type="date" id="mydate"> 
             <input type="text" placeholder="Enter Address" id="address">
 			<button onclick="fun2()"  style="cursor:pointer;">Sign Up</button>
@@ -100,19 +100,28 @@
             var fname=document.getElementById('fname');
             var lname=document.getElementById('lname');
             var email=document.getElementById('email');
-            var login_type=document.getElementsByName('login_type').value;
+            var arr=document.getElementsByName('login_type');
+            var login_type='user';
+            for(i=0;i<arr.length;i++)
+            {
+                if(arr[i].checked)
+                {
+                    login_type=arr[i].value;
+                    break;
+                }
+            }
             var date=document.getElementById('mydate').value;
             var address=document.getElementById('address');
             var contact=document.getElementById('phoneNumber');
             
             if(pass1==""||pass2==""||fname==""||lname==""||email==""||contact==""||address=='')
             alert("Enter Values ");
-            else if( pass1 != pass2) { 
+            else if( pass1.value != pass2.value) { 
             alert ("Passwords do not match")
             }
         else{
             const xml = new XMLHttpRequest();
-            const url = "/signup";
+            const url = "/insert";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify(
@@ -124,7 +133,7 @@
                 login_type:login_type,
                 number:contact.value,
                 date:date,
-                address:address.value;
+                address:address.value
                 }
             ));
             window.location.href="/";

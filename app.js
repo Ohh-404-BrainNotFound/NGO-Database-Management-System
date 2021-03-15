@@ -11,7 +11,7 @@ const dashboardRouter = require('./routes/dashboard')
 const signupRouter=require('./routes/signup');
 const memberRouter = require('./routes/member')
 const donorRouter = require('./routes/donor')
-
+const insertTable=require('./routes/insertTable');
 var app = express();
 
 // view engine setup
@@ -32,7 +32,7 @@ app.use('/dashboard',dashboardRouter);
 app.use("/signup",signupRouter);
 app.use('/members',memberRouter);
 app.use('/donors',donorRouter);
-
+app.use('/insert',insertTable);
 app.use(function(req, res, next) {
   next(createError(404));
 });

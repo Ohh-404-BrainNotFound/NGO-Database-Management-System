@@ -1,9 +1,8 @@
 const express=require('express');
-const mysql=require('sql');
+const mysql=require('mysql');
 require('dotenv').config();
-const router=require('router');
-
-var con=mysql.CreateConnection(
+const router=express.Router();
+var con=mysql.createConnection(
     {
         host:'localhost',
         user:process.env.user,
@@ -18,7 +17,7 @@ console.log(data);
 await con.connect(async (err)=>{
     if(err)
     throw err;
-    var countRows='SELECT COUNT(*) from users';
+    // var countRows='SELECT COUNT(*) from users';
     // var rows=await con.query(countRows,(err,result)=>{
     //     if(err)
     //     throw err;
