@@ -17,6 +17,7 @@ app.set('view engine','ejs');
 app.use(logger('dev'));
 app.use(bodyParser.json({ limit: '10mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
+//* This line is necessary when sending data through content-type: application/json 
 app.use(express.json());
 app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.static('public'));
@@ -29,13 +30,6 @@ app.use("/signup",signupRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
-app.post('/login/signup',(req,res)=>{
-alert('Reached app');
-})
-app.get("/signup",(req,res)=>{
-  alert('Reached get app');
-})
 app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -17,7 +17,7 @@
 			<input id="email" type="email" placeholder="Email" />
 			<input id="pass1" type="password" placeholder="Password" />
             <input id="pass2" type="password" placeholder="Rewrite Password" />
-			<button onclick="fun2()">Sign Up</button>
+			<button onclick="fun2()"  style="cursor:pointer;">Sign Up</button>
             </div>
 
 	</div>
@@ -29,7 +29,7 @@
 			<input id="password" type="password" placeholder="Password" />
             <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
-			<button type="submit">Sign In</button>
+			<button type="submit" style="cursor:pointer;" onclick="fun1()">Sign In</button>
             </div>
 	</div>
 	<div class="overlay-container">
@@ -38,13 +38,13 @@
 				<br><br><br>
                 <h1>Don’t delay give today!</h1>
 				<br><br>
-                <button class="ghost" id="signIn">Sign In</button>
+                <button class="ghost" id="signIn"  style="cursor:pointer;">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
                 <br><br><br><br><br>
 				<h1>Participate in changing the world.</h1>
                 <br><br><br><br>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<button class="ghost" id="signUp"  style="cursor:pointer;">Sign Up</button>
 			</div>
 		</div>
 	</div>
@@ -88,8 +88,12 @@
 
         async function fun2()
         {
+            var pass1=document.getElementById('pass1').value;
+            var pass2=document.getElementById('pass2').value;
+            var name=document.getElementById('name').value;
+            var email=document.getElementById('email').value;
             if( pass1 != pass2) { 
-            alert ("Password do not match")
+            alert ("Passwords do not match")
             }
         else{
             const xml = new XMLHttpRequest();
@@ -104,6 +108,7 @@
                 number:document.getElementById("phoneNumber").value||""
                 }
             ));
+            window.location.href="/";
         }
         
         }
