@@ -23,9 +23,10 @@ await con.connect(async (err)=>{
     //     throw err;
     //     console.log('Counting Query Successfully');
     // })
-    var rows=5;
+    var rows=1;
     console.log('Reached at starting of Insertion')
-    var sqlQuery='INSERT INTO ngo.user VALUES(`${rows+1}`,`${data.fname}`,${data.lname},${data.email},${data.login_type},${data.pass},${data.address},${data.date},${data.number})';
+    var sqlQuery=`INSERT INTO ngo.user VALUES(1,'${data.fname}','${data.lname}','${data.email}','${data.login_type}','${data.pass}','${data.address}','${data.date}','${data.number}')`;
+    console.log("Query",sqlQuery);
     await con.query(sqlQuery,(err,result)=>{
         if(err)
         throw err;
