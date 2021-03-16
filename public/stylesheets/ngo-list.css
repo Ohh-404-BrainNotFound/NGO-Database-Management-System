@@ -1,0 +1,55 @@
+.ngo__list {
+    margin-top: -52%;
+    margin-left: 20%;
+}
+
+.ngo__name {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.ngo__name > h1 {
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.ngo__name > img {
+    height: 30px;
+    width: 30px;
+}
+
+.ngo__container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 70%;
+    margin-left: 10%;
+    grid-gap: 2%;
+}
+
+.ngo {
+    width: 300px;
+    height: 300px;
+    background-color: #11254B;
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ngo__card {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: 100%;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+.ngo__details > h1{
+    padding-top: 20%;
+    font-size: 20px;
+    font-weight: 100;
+}
