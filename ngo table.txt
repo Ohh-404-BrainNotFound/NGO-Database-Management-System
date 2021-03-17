@@ -7,19 +7,8 @@ Amount int(125) not null,
 Ngo_id int(124) not null,
 Ngo_name varchar(125) not null,
 RegDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-constraint foreign key (user_id) references signup(user_id) on delete cascade on update
-cascade,
-constraint foreign key (Ngo_id) references ngo(Ngo_id) on delete cascade on update
-cascade
 )
-// ngo registration table
 
-create table ngo(
-ngo_id int(124) primary key not null,
-Ngo_name varcahr(125) not null,
-logo longblob NOT NULL,
-RegDate timestamp NULL DEFAULT CURRENT_TIMESTAMP
-)
 //signup table
 
 create table signup(
@@ -31,15 +20,17 @@ Email varchar(200) not NULL,
   Password varchar(250) not NULL,
 Address varcahr(250) not null
 )
-// ngo images
 
-create table Ngo_work(
-image_id int(100) primary key not null,
-Ngo_id int(124) not null,
-work_image longblob not null,
-constraint foreign key (Ngo_id) references ngo(Ngo_id) on delete cascade on update
-cascade
+// ngo registration table
+
+create table ngo(
+ngo_id int(124) primary key not null,
+Ngo_name varchar(125) not null,
+logo longblob NOT NULL,
+government_id varchar(125) not null,
+RegDate timestamp NULL DEFAULT CURRENT_TIMESTAMP
 )
+
 // user registration to ngo
 
 create table ngo_user(
@@ -53,4 +44,36 @@ cascade
 constraint foreign key (Ngo_id) references ngo(Ngo_id) on delete cascade on update
 cascade
 )
+
+// ngo images
+
+create table Ngo_work(
+image_id int(100) primary key not null,
+Ngo_id int(124) not null,
+work_image longblob not null,
+constraint foreign key (Ngo_id) references ngo(Ngo_id) on delete cascade on update
+cascade
+)
+
+
+//update member to ngo
+create table ngo_member(
+member_id int(125) primary key not null,
+Ngo_id int(124) not null,
+Ngo_name varchar(125) not null,
+user_name varchar(125) not null,
+designation varchar(125) not null,
+work_image longblob not null
+constraint foreign key(Ngo_id) references ngo(Ngo_id) on delete cascade on update cascade
+)
+
+//spending from ngo
+
+create table ngo_spending(
+spending_id int(125) primary key not null,
+Ngo_id int(124) not null,
+Ngo_name varchar(125) not null,
+Money_spent int(124) not null,
+Date timestamp NULL DEFAULT CURRENT_TIMESTAMP
+constraint foreign key(Ngo_id) references ngo(Ngo_id) on delete cascade on update cascade
 )

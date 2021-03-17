@@ -12,7 +12,8 @@ const signupRouter=require('./routes/signup');
 const memberRouter = require('./routes/member')
 const donorRouter = require('./routes/donor')
 const insertTable = require('./routes/insertTable');
-const ngoListRouter = require('./routes/ngo-list')
+const ngoListRouter = require('./routes/ngo-list');
+const { ALPN_ENABLED } = require('constants');
 var app = express();
 
 // view engine setup
@@ -35,6 +36,10 @@ app.use("/members",memberRouter);
 app.use('/donors',donorRouter);
 app.use('/insert',insertTable);
 app.use('/ngo-list',ngoListRouter)
+
+app.get('/ngo',(req,res)=>{
+  res.render('./dashboard/ngo',{});
+})
 
 app.use(function(req, res, next) {
   next(createError(404));
