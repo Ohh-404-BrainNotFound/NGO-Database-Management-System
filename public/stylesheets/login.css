@@ -74,8 +74,7 @@ button.ghost {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
+	padding: 30px;
 	text-align: center;
 }
 
@@ -107,6 +106,8 @@ input {
 }
 
 .sign-in-container {
+	position: relative;
+	align-items: center;
 	left: 0;
 	width: 50%;
 	z-index: 2;
@@ -128,6 +129,7 @@ input {
 	opacity: 1;
 	z-index: 5;
 	animation: show 0.6s;
+	background: white;
 }
 
 @keyframes show {
