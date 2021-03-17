@@ -41,6 +41,10 @@ app.get('/ngo',(req,res)=>{
   res.render('./dashboard/ngo',{});
 })
 
+app.get('/donate',(req,res)=>{
+  res.render('./dashboard/donate',{});
+})
+
 app.use(function(req, res, next) {
   next(createError(404));
 });

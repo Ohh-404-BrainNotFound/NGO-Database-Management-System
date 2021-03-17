@@ -1,4 +1,4 @@
-.ngo__container {
+.donate__container {
     width: 97%;
     display: flex;
     margin-top: 3%;
@@ -10,7 +10,7 @@
     background-color: linear-gradient(to right, #A73AA2, #032e57);
 }
 
-.ngo__logo {
+.donate__logo {
     width: 30%;
     height: 30%;
     display: flex;
@@ -18,36 +18,51 @@
     align-items: center;
 }
 
-.ngo__content {
+.donate__content {
     width: 94%;
     height: 70vh;
 }
 
-.ngo__info {
+.donate__info {
     display: flex;
     height: 40vh;
     justify-content: space-evenly;
     flex-direction: column;
 }
 
-.ngo__name {
+.donate__name {
     font-size: 25px;
     color: white;
     float: left;
 }
 
-.ngo__data {
+.donate__data {
     color: white;
     font-size: 20px;
 }
 
 .donate__btn {
     border-radius: 40px;
-    background-color: #032e57;
+    background-color: #9B3979;
     color: white;
     font-size: 20px;
     padding: 6px 10px;
     border: none;
     width: 15%;
     height: 7vh;
+}
+
+.donate__amount {
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.donate__input {
+    height: 10vh;
+    width: 30%;
+    font-size: 50px;
+}
+
+.donate__rupee  {
+    font-size: 50px;
 }
