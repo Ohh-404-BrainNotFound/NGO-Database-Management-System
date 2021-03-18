@@ -258,3 +258,34 @@ top:1px;
   font-size:13px;
   opacity:0.6;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  margin: auto;
+  height: 30vh;
+  color: white;
+  margin-top: -10%;
+}
+
+.footer__description {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 30vh;
+  width: 40%;
+}
+
+.footer__description > p{
+  font-size: 20px;
+}
+
+.footer__link {
+  display: flex;
+  height: 30vh;
+  flex-direction: column;
+  justify-content: space-around;
+}
