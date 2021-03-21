@@ -134,8 +134,7 @@
             const url = "/insert";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
-           var ob1 = await xml.send(JSON.stringify(
-                {
+           var ob1 = await xml.send(JSON.stringify({
                 fname:fname.value,
                 lname:lname.value,
                 pass:pass1.value,
@@ -144,8 +143,8 @@
                 number:contact.value,
                 date:date,
                 address:address.value
-                }
-            ));
+            })
+            );
             window.location.href="/";
         }
         

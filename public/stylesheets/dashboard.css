@@ -75,10 +75,10 @@
     width: 15vw;
 }
 
-.menu__elements > h1 {
+.menu__elements > h1, .menu__elements > a {
     color: white;
-    font-size: 22px;
-    font-weight: lighter;
+    font-size: 10px;
+    font-weight: 100;
     font-family: "montserrat";
 }
 

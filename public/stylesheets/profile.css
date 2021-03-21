@@ -1,0 +1,59 @@
+.profile__container {
+    margin-top: -47%;
+    margin-left: 20%;
+}
+
+.profile__name {
+    color: white;
+    display: flex;
+    font-weight: 100;
+    font-style: italic;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 2%;
+}
+
+.profile__info, .profile__infomore {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 6%;
+}
+
+.profile__info > label , .profile__infomore > label {
+    margin-top: 1%;
+    font-size: 25px;
+    color: white;
+    font-weight: lighter;
+}
+
+.profile__info > input ,  .profile__infomore > input {
+    width: 70%;
+    height: 5vh;
+    background: transparent;
+    border: 1px solid  white;
+    color: white;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.profile__section {
+    display: flex;
+    flex-direction: row;
+    width: 70vw;
+}
+
+.btn-update {
+    border-radius: 40px;
+    background-color: #9B3979;
+    color: white;
+    font-size: 20px;
+    padding: 6px 10px;
+    border: none;
+    width: 15%;
+    height: 7vh;
+    margin-top: 5%;
+    margin-left: 6%;
+}
