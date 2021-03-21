@@ -25,7 +25,7 @@ router.post("/", async (req, res, next) => {
         // })
         var rows = 1;
         console.log('Reached at starting of Insertion')
-        var sqlQuery = `INSERT INTO ngo.user VALUES(1,'${data.fname}','${data.lname}','${data.email}','${data.login_type}','${data.pass}','${data.address}','${data.date}','${data.number}')`;
+        var sqlQuery = `INSERT INTO ngo.user (fName,lName,email,login_type,password,address,regDate,phoneNumber) VALUES('${data.fname}','${data.lname}','${data.email}','${data.login_type}','${data.pass}','${data.address}','${data.date}','${data.number}')`;
         console.log("Query", sqlQuery);
         await con.query(sqlQuery, (err, result) => {
             if (err)
