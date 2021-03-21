@@ -31,24 +31,24 @@ router.post("/", async (req, res, next) => {
     var query = `SELECT COUNT(*) from ngo.user where ngo.user.fname='${data.username}' and ngo.user.password='${data.password}'`;
     await con.query(query, (err, result) => {
       // if user is correct 
-      const token = getToken(data[0]._id);
-            res.cookie("jwt",token,{
-                httpOnly:true,
-                maxAge:MAXAGE*1000
-            });
-            res.redirect("");
+      // const token = getToken(data[0]._id);
+      //       res.cookie("jwt",token,{
+      //           httpOnly:true,
+      //           maxAge:MAXAGE*1000
+      //       });
+      //       res.redirect("");
       
       if (err) throw err;
       console.log("Login", result);
     });
   });
 // });
-router.get("/",ensureGuest, function (req, res, next) {
+router.get("/",function (req, res, next) {
   res.render("login", {});
 });
 
 
-router.get("/logout",ensureAuth,(req,res)=>{
+router.get("/logout",(req,res)=>{
   res.cookie("jwt","",{maxAge:1});
   res.redirect("/");
 })
