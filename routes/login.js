@@ -43,7 +43,7 @@ router.post("/", async (req, res, next) => {
     });
   });
 // });
-router.get("/", ,ensureGuest, function (req, res, next) {
+router.get("/",ensureGuest, function (req, res, next) {
   res.render("login", {});
 });
 
