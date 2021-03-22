@@ -13,7 +13,8 @@ const memberRouter = require('./routes/member')
 const donorRouter = require('./routes/donor')
 const insertTable = require('./routes/insertTable');
 const ngoListRouter = require('./routes/ngo-list');
-const profileRouter  = require('./routes/profile')
+const profileRouter  = require('./routes/profile');
+const dashboardNgo = require('./routes/dashboard-ngo');
 const { ALPN_ENABLED } = require('constants');
 var app = express();
 
@@ -38,6 +39,7 @@ app.use('/donors',donorRouter);
 app.use('/insert',insertTable);
 app.use('/ngo-list',ngoListRouter)
 app.use('/profile',profileRouter);
+app.use('/dashboard-ngo',dashboardNgo);
 
 app.get('/ngo',(req,res)=>{
   res.render('./dashboard/ngo',{});
