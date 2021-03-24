@@ -24,20 +24,9 @@ var con = mysql.createConnection({
 router.post("/", async (req, res, next) => {
   var data = req.body;
   console.log("login",data);
-  // await con.connect(async (err) => {
-  //   if (err) throw err;
 
-    
     var query = `SELECT COUNT(*) from ngo.user where ngo.user.fname='${data.username}' and ngo.user.password='${data.password}'`;
     await con.query(query, (err, result) => {
-      // if user is correct 
-      // const token = getToken(data[0]._id);
-      //       res.cookie("jwt",token,{
-      //           httpOnly:true,
-      //           maxAge:MAXAGE*1000
-      //       });
-      //       res.redirect("");
-      
       if (err) throw err;
       console.log("Login", result);
     });

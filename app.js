@@ -17,6 +17,7 @@ const profileRouter  = require('./routes/profile');
 const dashboardNgo = require('./routes/dashboard-ngo');
 const ngoRouter = require('./routes/ngo');
 const donorUser = require('./routes/donor-user')
+const ngologinRouter = require('./routes/ngo-login')
 const { ALPN_ENABLED } = require('constants');
 var app = express();
 
@@ -44,6 +45,7 @@ app.use('/profile',profileRouter);
 app.use('/dashboard-ngo',dashboardNgo);
 app.use('/ngo',ngoRouter);
 app.use('/donor-user',donorUser);
+app.use('/ngo-login',ngologinRouter);
 
 app.get('/ngo',(req,res)=>{
   res.render('./dashboard/ngo',{});

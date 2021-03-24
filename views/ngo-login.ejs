@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NGO</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
+</head>
+
+<body>
+    <h2>Small charities can bring bigger impacts.</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container" style="overflow: auto;">
+            <div class="form">
+			<h1>Create Account</h1>
+			<input id="name" type="text" placeholder="Ngo name" class="formdata">
+			<input id="email" type="email" placeholder="Email" class="formdata">
+            <input id="govtid" type="text" placeholder="Enter government certified ngo id" class="formdata">
+			<input id="pass1" type="password" placeholder="Password" class="formdata">
+            <input id="pass2" type="password" placeholder="Rewrite Password" class="formata">
+            <textarea type="text" rows="7" cols="40" placeholder="input some information about ngo" name="ngo_information" class="formdata"></textarea>
+            <label for="bank details">Enter bank details</label>
+            <input type="text" name="bank_name" placeholder="Enter your bank name" id="bank_name" class="formdata">
+            <input type="text" name="ifsc_code" placeholder="Enter your account IFSC code" class="formdata">
+            <input type="text" name="account_no" placeholder="Enter your bank account no" class="formdata">
+            <input type="date" id="mydate" class="formdata" name="date"> 
+            <input type="text" placeholder="Enter Address" id="address" class="formdata" name="address">
+            <input type="file" placeholder="ngo image" id="image" name="ngo-logo">
+			<button onclick="submitData()"  style="cursor:pointer;">Sign Up</button>
+            </div>
+	</div>
+	<div class="form-container sign-in-container">
+            <div class="form">
+			<h3>Sign in</h3>
+			<input id="username" type="id" placeholder="Username" />
+			<input id="password" type="password" placeholder="Password"
+            />
+            <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
+			<a href="#">Forgot your password?</a>
+			<button style="cursor:pointer;" onclick="fun1()">Sign In</button>
+            </div>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<br><br><br>
+                <h1>Don’t delay give today!</h1>
+				<br><br>
+                <button class="ghost" id="signIn"  style="cursor:pointer;">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+                <br><br><br><br><br>
+				<h1>Participate in changing the world.</h1>
+                <br><br><br><br>
+				<button class="ghost" id="signUp"  style="cursor:pointer;">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <footer>
+        <p>
+            Join with <b>NGO</b> and <b>Help someone’s dream come true </b>
+        </p>
+    </footer>
+</body>
+
+<script>
+
+    window.onload=()=>{
+        document.getElementById('mydate').value=new Date().toISOString().substr(0,10);
+    }
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+<script>
+    function makeid(length) {
+        var result = '';
+        var characters =
+        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
+    async function fun1() {
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+
+        if (username.value.trim() == "" || password.value.trim() == "") {
+            alert("Blank username or password");
+            username.style.border = "solid 3px red";
+            password.style.border = "solid 3px red";
+            document.getElementById("label").style.visibility = "visible";
+            
+        } else {
+            var xhr=new XMLHttpRequest();
+            const url='/login';
+            xhr.open('POST',url,true);
+            xhr.setRequestHeader('content-type','application/json');
+            await xhr.send(JSON.stringify({
+                username:username.value,
+                password:password.value
+            }));
+            window.location.href="/";
+        }
+    } 
+      async function submitData() {
+          let formData = document.querySelectorAll('.formdata');
+          let fieldNames = ['name','email','govtid','pass1','pass2','ngo_information','bank_name','ifsc_code','account_no','date','address'];
+          let data = {};
+          let i = 0;
+          formData.forEach((element)=>{
+              data[fieldNames[i]] = element.value;
+              i++; 
+          })
+          console.log(data);
+      }
+
+       /* async function fun2()
+        {
+            var pass1=document.getElementById('pass1');
+            var pass2=document.getElementById('pass2');
+            var fname=document.getElementById('fname');
+            var lname=document.getElementById('lname');
+            var email=document.getElementById('email');
+            var arr=document.getElementsByName('login_type');
+            var login_type='user';
+            var ngoId = ngoName + makeid(6);
+            for(i=0;i<arr.length;i++)
+            {
+                if(arr[i].checked)
+                {
+                    login_type=arr[i].value;
+                    break;
+                }
+            }
+            var date=document.getElementById('mydate').value;
+            //date=date.substr(0,4)+'-'+date.substr(5,2)+'-'+date.substr(8,2)
+            var address=document.getElementById('address');
+            var contact=document.getElementById('phoneNumber');
+            
+            if(pass1==""||pass2==""||fname==""||lname==""||email==""||contact==""||address=='')
+            alert("Enter Values ");
+            else if( pass1.value != pass2.value) { 
+            alert ("Passwords do not match")
+            }
+        else{
+            const xml = new XMLHttpRequest();
+            const url = "/insert";
+            xml.open('POST',url,true);
+            await xml.setRequestHeader("content-type",'application/json');
+           var ob1 = await xml.send(JSON.stringify({
+                fname:fname.value,
+                lname:lname.value,
+                pass:pass1.value,
+                email:email.value,
+                login_type:login_type,
+                number:contact.value,
+                date:date,
+                address:address.value
+            })
+            );
+            window.location.href="/";
+        }
+        
+        }*/
+</script>
+
+</html>

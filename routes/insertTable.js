@@ -14,17 +14,6 @@ var con = mysql.createConnection(
 router.post("/", async (req, res, next) => {
     var data = req.body;
     console.log(data);
-    // await con.connect(async (err) => {
-        // if (err)
-        //     throw err;
-        // var countRows='SELECT COUNT(*) from users';
-        // var rows=await con.query(countRows,(err,result)=>{
-        //     if(err)
-        //     throw err;
-        //     console.log('Counting Query Successfully');
-        // })
-        var rows = 1;
-        // try 
         console.log('Reached at starting of Insertion')
         var sqlQuery = `INSERT INTO ngo.user (fName,lName,email,login_type,password,address,regDate,phoneNumber) VALUES('${data.fname}','${data.lname}','${data.email}','${data.login_type}','${data.pass}','${data.address}','${data.date}','${data.number}')`;
         console.log("Query", sqlQuery);
