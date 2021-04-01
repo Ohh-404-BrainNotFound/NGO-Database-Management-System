@@ -12,20 +12,22 @@
 	<div class="form-container sign-up-container" style="overflow: auto;">
             <div class="form">
 			<h1>Create Account</h1>
-			<input id="name" type="text" placeholder="Ngo name" class="formdata">
-			<input id="email" type="email" placeholder="Email" class="formdata">
-            <input id="govtid" type="text" placeholder="Enter government certified ngo id" class="formdata">
-			<input id="pass1" type="password" placeholder="Password" class="formdata">
-            <input id="pass2" type="password" placeholder="Rewrite Password" class="formata">
-            <textarea type="text" rows="7" cols="40" placeholder="input some information about ngo" name="ngo_information" class="formdata"></textarea>
+            <form method="POST" action="/ngo-signup" enctype="multipart/form-data">
+			<input id="name" type="text" placeholder="Ngo name" name="ngo_name" class="formdata" value="asaas">
+			<input id="email" type="email" placeholder="Email" name="ngo_email" class="formdata" value="a@gmail.com">
+            <input id="govtid" type="text" placeholder="Enter government certified ngo id" name="ngo_id" class="formdata" value="12121">
+			<input id="pass1" type="password" placeholder="Password" class="formdata" name="ngo_pass" value="123">
+            <input id="pass2" type="password" placeholder="Rewrite Password" class="formata" name="ngo_repass" value="123">
+            <textarea type="text" rows="7" cols="40" placeholder="input some information about ngo" id="ngo_information" name="ngo_information" class="formdata" value="we works"></textarea>
             <label for="bank details">Enter bank details</label>
-            <input type="text" name="bank_name" placeholder="Enter your bank name" id="bank_name" class="formdata">
-            <input type="text" name="ifsc_code" placeholder="Enter your account IFSC code" class="formdata">
-            <input type="text" name="account_no" placeholder="Enter your bank account no" class="formdata">
+            <input type="text" name="bank_name" placeholder="Enter your bank name" id="bank_name" class="formdata" value="bob">
+            <input type="text" name="ifsc_code" placeholder="Enter your account IFSC code" id="ifsc_code" class="formdata" value="dfdfd12">
+            <input type="text" name="account_no" placeholder="Enter your bank account no" id="account_no" class="formdata" value="121211">
             <input type="date" id="mydate" class="formdata" name="date"> 
-            <input type="text" placeholder="Enter Address" id="address" class="formdata" name="address">
-            <input type="file" placeholder="ngo image" id="image" name="ngo-logo">
-			<button onclick="submitData()"  style="cursor:pointer;">Sign Up</button>
+            <input type="text" placeholder="Enter Address" id="address" class="formdata" name="address" value="asasa sa sas as">
+            <input type="file" placeholder="ngo image" id="image" name="ngologo">
+			<button type="submit" style="cursor:pointer;" onclick="test()">Sign Up</button>
+            </form>
             </div>
 	</div>
 	<div class="form-container sign-in-container">
@@ -115,19 +117,11 @@
             window.location.href="/";
         }
     } 
-      async function submitData() {
-          let formData = document.querySelectorAll('.formdata');
-          let fieldNames = ['name','email','govtid','pass1','pass2','ngo_information','bank_name','ifsc_code','account_no','date','address'];
-          let data = {};
-          let i = 0;
-          formData.forEach((element)=>{
-              data[fieldNames[i]] = element.value;
-              i++; 
-          })
-          console.log(data);
-      }
+    function test() {
+        console.log("yo");
+    }
 
-       /* async function fun2()
+        /*async function fun2()
         {
             var pass1=document.getElementById('pass1');
             var pass2=document.getElementById('pass2');
