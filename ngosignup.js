@@ -1,69 +1,36 @@
 var express = require('express');
 var router = express.Router();
-var connection  = require('../lib/db');
+var db=require('../lib/db');//where you have saved the db.js
+router.get('/register', function(req, res, next) {
+  res.render('registration-form');
+});
+// to store user input detail on post request
+router.post('/register', function(req, res, next) {
+    //the value(name="") which you have put in the form  to be used after body.
+    inputData ={
+        ngo_name: req.body.ngo_name,
+        email_address: req.body.email_address,
+        ngo_password: req.body.password,
+        ngo_confirm_password: req.body.confirm_password,
+        ngo_info: req.body.ngo_info,
+        government_id: req.body.government_id,
+        ngo_address: req.body.ngo_address,
+        ngo_bank:req.body.ngo_bank,
+        ngo_account: req.body.ngo_account,
+        ngo_ifsc: req.body.ifsc
+    }
+ if(inputData.confirm_password != inputData.password){
+    var msg ="Password & Confirm Password is not Matched";
+ }else{
+     
+    // save users data into database
+    var sql = 'INSERT INTO ngosignup SET ?';
+   db.query(sql, inputData, function (err, data) {
+      if (err) throw err;
+           });
+  var msg ="Your are successfully registered";
+ }
+ res.render('registration-form',{alertMsg:msg});// the form address inside render
+});
+module.exports = router;
 
-router.get('/register', function(req, res, next){    
-res.render('auth/register', {
-ngomail: '',
-ngo_name: '',
-ngo_password: '',
-ngo_info: '',
-government_id: '',
-ngo_address:'',
-ngo_bank:'',
-ngo_account:'',
-ngo_ifsccode:''    
-})
-})
-// user registration
-router.post('/post-register', function(req, res, next){    
-req.assert('ngomail', 'A valid email is required').isEmail()          
-req.assert('ngo_name', 'name is required').notEmpty()   
-req.assert('ngo_password', 'password is required').notEmpty()  
-req.assert('ngo_info', 'info is required').notEmpty()  
-req.assert('government_id', 'government_id is required').notEmpty()  
-req.assert('ngo_address', 'address is required').notEmpty()  
-req.assert('ngo_bank', 'bank name is required').notEmpty()  
-req.assert('ngo_account', 'Bank account is required').notEmpty()  
-req.assert('ngo_ifsccode', 'Bank ifsc code is required').notEmpty()  
-var errors = req.validationErrors()
-if( !errors ) {   //No errors were found.  Passed Validation!
-var user = {
-ngomail: req.sanitize('ngomail').escape().trim(),
-ngo_name: req.sanitize('ngo_name').escape().trim(),
-ngo_password: req.sanitize('ngo_password').escape().trim(),
-ngo_info: req.sanitize('ngo_info').escape().trim(),
-government_id: req.sanitize('government_id').escape().trim(),
-ngo_address: req.sanitize('ngo_address').escape().trim(),
-ngo_bank: req.sanitize('ngo_bank').escape().trim(),
-ngo_account: req.sanitize('ngo_account').escape().trim(),
-ngo_ifsccode: req.sanitize('ngo_ifsccode').escape().trim()
-}
-connection.query('INSERT INTO ngosignup SET ?', user, function(err, result) {
-if (err) {
-req.flash('error', err)
-res.render('auth/register', {
-    ngomail: '',
-    ngo_name: '',
-    ngo_password: '',
-    ngo_info: '',
-    government_id: '',
-    ngo_address:'',
-    ngo_bank:'',
-    ngo_account:'',
-    ngo_ifsccode:''                    
-})
-} else {                
-req.flash('success', 'You have successfully signup!');
-res.redirect('/login');
-}
-})
-}
-else {   //Display errors to user
-var error_msg = ''
-errors.forEach(function(error) {
-error_msg += error.msg + '<br>'
-})                
-req.flash('error', error_msg)     
-}
-})
