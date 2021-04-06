@@ -11,7 +11,7 @@ const dashboardRouter = require('./routes/dashboard')
 const signupRouter=require('./routes/signup');
 const memberRouter = require('./routes/member')
 const donorRouter = require('./routes/donor')
-const insertTable = require('./routes/insertTable');
+const userLogin = require('./routes/user-login');
 const ngoListRouter = require('./routes/ngo-list');
 const profileRouter  = require('./routes/profile');
 const dashboardNgo = require('./routes/dashboard-ngo');
@@ -39,7 +39,7 @@ app.use('/dashboard',dashboardRouter);
 app.use("/signup",signupRouter);
 app.use("/members",memberRouter);
 app.use('/donors',donorRouter);
-app.use('/insert',insertTable);
+app.use('/insert',userLogin);
 app.use('/ngo-list',ngoListRouter)
 app.use('/profile',profileRouter);
 app.use('/dashboard-ngo',dashboardNgo);
