@@ -12,7 +12,7 @@
 	<div class="form-container sign-up-container" style="overflow: auto;">
             <div class="form">
 			<h1>Create Account</h1>
-            <form method="POST" action="/ngo-signup" enctype="multipart/form-data">
+            <form method="POST" action="/ngo-signup" >
 			<input id="name" type="text" placeholder="Ngo name" name="ngo_name" class="formdata" value="asaas">
 			<input id="email" type="email" placeholder="Email" name="ngo_email" class="formdata" value="a@gmail.com">
             <input id="govtid" type="text" placeholder="Enter government certified ngo id" name="ngo_id" class="formdata" value="12121">
@@ -25,7 +25,6 @@
             <input type="text" name="account_no" placeholder="Enter your bank account no" id="account_no" class="formdata" value="121211">
             <input type="date" id="mydate" class="formdata" name="date"> 
             <input type="text" placeholder="Enter Address" id="address" class="formdata" name="address" value="asasa sa sas as">
-            <input type="file" placeholder="ngo image" id="image" name="ngologo">
 			<button type="submit" style="cursor:pointer;" onclick="test()">Sign Up</button>
             </form>
             </div>
