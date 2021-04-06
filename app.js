@@ -3,6 +3,10 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var registrationRouter = require('../routes/ngosignup');
+var loginRouter = require('./routes/ngologin');
+var dashboardRouter = require('./routes/dashboard');
+
 const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
 const loginRouter  = require("./routes/login")
@@ -32,6 +36,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.static('public'));
 
+app.use('/', registrationRouter);
+app.use('/', loginRouter);
+app.use('/', dashboardRouter);
 app.use('/',landingRouter)
 app.use('/login',loginRouter);
 app.use('/form',structureDb);
