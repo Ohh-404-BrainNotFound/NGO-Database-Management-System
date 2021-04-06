@@ -3,7 +3,7 @@ let router = express.Router();
 let db=require('../lib/db');//where you have stored the db.js
 //GET users listing. 
 router.get('/login', function(req, res, next) {
-  res.render('login-form');
+  res.render('login-form');//login page name
 });
 router.post('/login', function(req, res){
     let emailAddress = req.body.email_address;
@@ -16,7 +16,7 @@ router.post('/login', function(req, res){
             req.session.emailAddress= emailAddress;
             res.redirect('/dashboard');
         }else{
-            res.render('login-form',{alertMsg:"Your Email Address or password is wrong"});
+            res.render('login-form',{alertMsg:"Your Email Address or password is wrong"});//loginpage name
         }
     })
 })
