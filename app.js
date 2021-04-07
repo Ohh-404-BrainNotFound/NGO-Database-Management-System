@@ -56,7 +56,7 @@ app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
 
 app.get('/ngo',(req,res)=>{
-  res.render('./dashboard/ngo',{});
+   await res.render('./dashboard/ngo',{});
 })
 
 app.get('/donate',(req,res)=>{
