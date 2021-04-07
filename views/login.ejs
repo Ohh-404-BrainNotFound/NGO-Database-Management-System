@@ -131,7 +131,7 @@
             }
         else{
             const xml = new XMLHttpRequest();
-            const url = "/insert";
+            const url = "/signup";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify({

@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
   res.render('ngo-login');//login page name
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     let emailAddress = req.body.email_address;
     let password = req.body.password;
     let sql= `SELECT * FROM ngosignup WHERE email_address = ${emailAddress} AND password = ${password} ?`;
