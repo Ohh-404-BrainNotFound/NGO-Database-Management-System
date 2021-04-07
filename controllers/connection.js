@@ -22,8 +22,9 @@ const executeAndReturn = async (query)=> {
     await connection.query(query, (err, result) => {
         if (err)
         throw err
-        else
-        return result;
+        else{
+            console.log(result);
+        return result;}
     })
 }
 

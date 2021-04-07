@@ -31,13 +31,15 @@
 	</div>
 	<div class="form-container sign-in-container">
             <div class="form">
+            <form action="/ngo-login" method="POST">
 			<h3>Sign in</h3>
-			<input id="username" type="id" placeholder="Username" />
-			<input id="password" type="password" placeholder="Password"
+			<input id="username" type="id" placeholder="Username" name="email_address" />
+			<input id="password" type="password" placeholder="Password" name="password"
             />
             <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
-			<button style="cursor:pointer;" onclick="fun1()">Sign In</button>
+			<button style="cursor:pointer;" type="submit" >Sign In</button>
+            </form>
             </div>
 	</div>
 	<div class="overlay-container">

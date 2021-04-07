@@ -15,4 +15,8 @@ var upload = multer({
     storage: storage,
   });
 
-module.exports = {upload};
+const sleep = (ms) => {
+   return new Promise((resolve) => setTimeout(resolve, ms));
+ };
+
+module.exports = {upload, sleep};

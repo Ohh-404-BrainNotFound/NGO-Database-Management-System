@@ -8,7 +8,7 @@ CREATE TABLE  images (
 
 -- query for ngo sign up table
 
-create table ngoregistration (
+create table ngodata (
   ngo_mail varchar(124) primary key not null,
   ngo_name varchar(125) not null,
   ngo_password varchar(30) not null,
