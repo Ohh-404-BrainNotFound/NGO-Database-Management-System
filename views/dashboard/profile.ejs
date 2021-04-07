@@ -8,24 +8,61 @@
     <div class="profile__section">
     <div class="profile__info">
         <label>First name</label>
-        <input type="text" name="fname"></input>
+        <input type="text" name="fname" id="fname"></input>
 
         <label>last Name</label>
-        <input type="text" name="fname"></input>
+        <input type="text" name="fname" id="lname"></input>
 
         <label>Email</label>
-        <input type="text" name="fname"></input>
+        <input type="text" name="fname" id="email"></input>
 
         <label>Phone Number</label>
-        <input type="number" name="fname"></input>
+        <input type="number" name="phone" id="phone"></input>
     </div>
     <div class="profile__infomore">
         <label>Address</label>
-        <input type="text" name="fname"></input>
+        <input type="text" name="address" id="address"></input>
 
         <label>Password</label>
-        <input type="text" name="fname"></input>
+        <input type="text" name="password" id="password"></input>
+
+        <label>Re-Password</label>
+        <input type="text" name="password" id="repassword"></input>
     </div>
     </div>
-    <button class="btn-update">Update</button>
+    <button class="btn-update" onclick="updateInfo()">Update</button>
 </div>
+
+<script>
+    window.onload = () => {
+       var userData = '<%- JSON.stringify(userInfo) %>';
+        setTimeout(()=> {
+            let data = JSON.parse(userData); 
+            document.getElementById('fname').value = data.fname;
+            document.getElementById('lname').value = data.lname;
+            document.getElementById('email').value = data.email;
+            document.getElementById('password').value = data.password;
+            document.getElementById('address').value = data.address;
+            document.getElementById('phone').value = data.phoneNumber;
+        },500)
+    }
+
+    const updateInfo = () => {
+        let updatedData = {};
+        updatedData.fname = document.getElementById('fname').value;
+        updatedData.lname = document.getElementById('lname').value;
+        updatedData.email = document.getElementById('email').value;
+        updatedData.password = document.getElementById('password').value;
+        updatedData.address = document.getElementById('address').value;
+        updatedData.phoneNumber = document.getElementById('phone').value;
+        console.log(updatedData);
+        var xhr = new XMLHttpRequest();
+        var url = "/profile"; 
+        xhr.open('POST', url, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(
+            JSON.stringify({
+                info: updatedData, 
+            })); 
+            }
+</script>

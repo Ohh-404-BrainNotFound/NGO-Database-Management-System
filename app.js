@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var session = require('express-session');
+require('dotenv').config();
 
 const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
@@ -31,13 +33,15 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.static('public'));
+app.use(cookieParser());
+app.use(session({secret: process.env.secret }));
 
 // app.use('/', registrationRouter);
 // app.use('/', dashboardRouter);
 app.use('/',landingRouter)
 app.use('/login',loginRouter);
 app.use('/form',structureDb);
-app.use('/dashboard',dashboardRouter);
+app.use('/dashboard-user',dashboardRouter);
 app.use("/signup",signupRouter);
 app.use("/members",memberRouter);
 app.use('/donors',donorRouter);

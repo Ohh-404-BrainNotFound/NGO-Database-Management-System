@@ -30,10 +30,15 @@ router.post("/", async(req,res) => {
         }
         else{
         // return result;
+        req.session.ok = "ok";
         if(result.length > 0) {
-            // req.session.isUserLoggedIn = true;
-            // res.session.userEmail = emailAddress;
+            req.session.isUserLoggedIn = true;
+            req.session.ok = req.session.ok + "0k";
+            console.log(result);
+            // console.log(req.session.ok);
+            req.session.userEmail = emailAddress;
             console.log("authenticated");
+            res.redirect('/dashboard-user');
         }
     }
     })
