@@ -9,7 +9,7 @@
 }
 
 body {
-	background-image: url("../images/back1.jpg");
+	background-image: url("../back1.jpg");
     background-position: center;
     background-size: cover;
 	display: flex;
@@ -98,7 +98,7 @@ input {
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 480px;
+	min-height: 600px;
 }
 
 .form-container {
@@ -109,6 +109,7 @@ input {
 }
 
 .sign-in-container {
+	margin-top: 60px;
 	position: relative;
 	align-items: center;
 	left: 0;
@@ -117,6 +118,7 @@ input {
 }
 
 .container.right-panel-active .sign-in-container {
+
 	transform: translateX(100%);
 }
 
@@ -197,7 +199,7 @@ input {
 }
 
 .overlay-left {
-	margin-top: 150px;
+	margin-top: 250px;
     background-position: center;
     background-size: cover;
 	transform: translateX(-20%);
@@ -208,7 +210,7 @@ input {
 }
 
 .overlay-right {
-	margin-top: 150px;
+	margin-top: 200px;
     background-position: center;
     background-size: cover;
 	right: 0;
