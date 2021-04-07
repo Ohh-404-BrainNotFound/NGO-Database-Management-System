@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "lint": "eslint *.js ",
+    "start": "node ./bin/www",
+    "prepare": "husky install"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -23,5 +25,15 @@
     "node-sass": "^5.0.0",
     "pg": "^8.5.1",
     "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0",
+    "eslint-plugin-vue": "^7.8.0",
+    "husky": "^6.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
