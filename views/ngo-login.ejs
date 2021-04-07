@@ -2,15 +2,14 @@
 <html lang="en">
 
 <head>
-    <title>NGO</title>
-    <link rel="stylesheet" href="stylesheets/login.css">
+    <title>NGO login</title>
+    <link rel="stylesheet" href="stylesheets/Ngologin.css">
 </head>
-
 <body>
-    <h2>Small charities can bring bigger impacts.</h2>
+    <h2 id="T1">A few people of integrity can go a long way.</h2>
 <div class="container" id="container">
 	<div class="form-container sign-up-container" style="overflow: auto;">
-            <div class="form">
+        <div class="form">
 			<h1>Create Account</h1>
             <form method="POST" action="/ngo-signup" >
 			<input id="name" type="text" placeholder="Ngo name" name="ngo_name" class="formdata">
@@ -25,53 +24,38 @@
             <input type="text" name="account_no" placeholder="Enter your bank account no" id="account_no" class="formdata" >
             <input type="date" id="mydate" class="formdata" name="date"> 
             <input type="text" placeholder="Enter Address" id="address" class="formdata" name="address" value="asasa sa sas as">
-			<button type="submit" style="cursor:pointer;" onclick="test()">Sign Up</button>
+			<button type="submit" style="cursor:pointer;">Sign Up</button>
             </form>
             </div>
 	</div>
 	<div class="form-container sign-in-container">
             <div class="form">
-            <form action="/ngo-login" method="POST">
 			<h3>Sign in</h3>
-			<input id="username" type="id" placeholder="Username" name="email_address" />
-			<input id="password" type="password" placeholder="Password" name="password"
+			<input id="username" type="id" placeholder="Username" />
+			<input id="password" type="password" placeholder="Password"
             />
             <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
-			<button style="cursor:pointer;" type="submit" >Sign In</button>
-            </form>
+			<button style="cursor:pointer;" onclick="fun1()">Sign In</button>
             </div>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<br><br><br>
-                <h1>Don’t delay give today!</h1>
-				<br><br>
+                <h2>Already have an account</h2>
                 <button class="ghost" id="signIn"  style="cursor:pointer;">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-                <br><br><br><br><br>
-				<h1>Participate in changing the world.</h1>
-                <br><br><br><br>
+				<h2>Charity begins at home, but should not end there</h2>
+            
 				<button class="ghost" id="signUp"  style="cursor:pointer;">Sign Up</button>
 			</div>
 		</div>
 	</div>
 </div>
-
-    <footer>
-        <p>
-            Join with <b>NGO</b> and <b>Help someone’s dream come true </b>
-        </p>
-    </footer>
 </body>
 
 <script>
-
-    window.onload=()=>{
-        document.getElementById('mydate').value=new Date().toISOString().substr(0,10);
-    }
     const signUpButton = document.getElementById('signUp');
     const signInButton = document.getElementById('signIn');
     const container = document.getElementById('container');
@@ -85,17 +69,6 @@
 </script>
 
 <script>
-    function makeid(length) {
-        var result = '';
-        var characters =
-        'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for (var i = 0; i < length; i++) {
-            result += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        return result;
-    }
-
     async function fun1() {
         var username = document.getElementById("username");
         var password = document.getElementById("password");
@@ -107,69 +80,39 @@
             document.getElementById("label").style.visibility = "visible";
             
         } else {
-            var xhr=new XMLHttpRequest();
-            const url='/login';
-            xhr.open('POST',url,true);
-            xhr.setRequestHeader('content-type','application/json');
-            await xhr.send(JSON.stringify({
-                username:username.value,
-                password:password.value
-            }));
-            window.location.href="/";
+           
         }
-    } 
-    function test() {
-        console.log("yo");
     }
 
-        /*async function fun2()
+        async function fun2()
         {
+            var fname=document.getElementById('fname');
+            var email=document.getElementById('email');
+            var GovID=document.getElementById('GovID');
+            var Rdate=document.getElementById('Rdate');
+            var Work=document.getElementById('Work');
+            var Locality=document.getElementById('Locality');
+            var city=document.getElementById('city');
+            var state=document.getElementById('State');
+            var country=document.getElementById('Country');
+            var Pin=document.getElementById('Pin');
+            var BName=document.getElementById('BName');
+            var AccountNO=document.getElementById('AccountNO');
+            var IFSC=document.getElementById('IFSC');
             var pass1=document.getElementById('pass1');
             var pass2=document.getElementById('pass2');
-            var fname=document.getElementById('fname');
-            var lname=document.getElementById('lname');
-            var email=document.getElementById('email');
-            var arr=document.getElementsByName('login_type');
-            var login_type='user';
-            var ngoId = ngoName + makeid(6);
-            for(i=0;i<arr.length;i++)
-            {
-                if(arr[i].checked)
-                {
-                    login_type=arr[i].value;
-                    break;
-                }
-            }
-            var date=document.getElementById('mydate').value;
-            //date=date.substr(0,4)+'-'+date.substr(5,2)+'-'+date.substr(8,2)
-            var address=document.getElementById('address');
-            var contact=document.getElementById('phoneNumber');
-            
-            if(pass1==""||pass2==""||fname==""||lname==""||email==""||contact==""||address=='')
-            alert("Enter Values ");
+
+            if(fname==""||email==""||GovID==""||Rdate==""||Work==""||Locality==""||city==""||state==""
+            ||country==""||Pin=="" ||BName==""||AccountNO==""||IFSC==""||pass1==""||pass2=="")
+            alert("Empty column ");
             else if( pass1.value != pass2.value) { 
             alert ("Passwords do not match")
             }
         else{
-            const xml = new XMLHttpRequest();
-            const url = "/insert";
-            xml.open('POST',url,true);
-            await xml.setRequestHeader("content-type",'application/json');
-           var ob1 = await xml.send(JSON.stringify({
-                fname:fname.value,
-                lname:lname.value,
-                pass:pass1.value,
-                email:email.value,
-                login_type:login_type,
-                number:contact.value,
-                date:date,
-                address:address.value
-            })
-            );
-            window.location.href="/";
+           
         }
         
-        }*/
+        }
 </script>
 
 </html>
