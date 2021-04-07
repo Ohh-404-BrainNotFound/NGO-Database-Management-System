@@ -26,15 +26,16 @@
             </div>
 	</div>
 	<div class="form-container sign-in-container">
+           <form action="/login" method="POST">
             <div class="form">
 			<h3>Sign in</h3>
-			<input id="username" type="id" placeholder="Username" />
-			<input id="password" type="password" placeholder="Password"
-            />
+			<input id="username" type="id" placeholder="email" name="email" />
+			<input id="password" type="password" placeholder="Password" name="password" />
             <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
 			<a href="#">Forgot your password?</a>
-			<button style="cursor:pointer;" onclick="fun1()">Sign In</button>
+			<button style="cursor:pointer;" type="submit" >Sign In</button>
             </div>
+            </form>
 	</div>
 	<div class="overlay-container">
 		<div class="overlay">
@@ -131,7 +132,7 @@
             }
         else{
             const xml = new XMLHttpRequest();
-            const url = "/insert";
+            const url = "/signup";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify({

@@ -3,15 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
-const loginRouter  = require("./routes/login")
+const loginRouter  = require("./routes/user-login")
 const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
-const signupRouter=require('./routes/signup');
+const signupRouter = require('./routes/user-signup');
 const memberRouter = require('./routes/member')
 const donorRouter = require('./routes/donor')
-const insertTable = require('./routes/insertTable');
 const ngoListRouter = require('./routes/ngo-list');
 const profileRouter  = require('./routes/profile');
 const dashboardNgo = require('./routes/dashboard-ngo');
@@ -32,6 +32,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname + '/../public')));
 app.use(express.static('public'));
 
+// app.use('/', registrationRouter);
+// app.use('/', dashboardRouter);
 app.use('/',landingRouter)
 app.use('/login',loginRouter);
 app.use('/form',structureDb);
@@ -39,7 +41,6 @@ app.use('/dashboard',dashboardRouter);
 app.use("/signup",signupRouter);
 app.use("/members",memberRouter);
 app.use('/donors',donorRouter);
-app.use('/insert',insertTable);
 app.use('/ngo-list',ngoListRouter)
 app.use('/profile',profileRouter);
 app.use('/dashboard-ngo',dashboardNgo);
@@ -49,7 +50,7 @@ app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
 
 app.get('/ngo',(req,res)=>{
-  res.render('./dashboard/ngo',{});
+   res.render('./dashboard/ngo',{});
 })
 
 app.get('/donate',(req,res)=>{
