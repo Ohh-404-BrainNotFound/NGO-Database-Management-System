@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NGO login</title>
+    <link rel="stylesheet" href="stylesheets/Ngologin.css">
+</head>
+<body>
+    <h2 id="T1">A few people of integrity can go a long way.</h2>
+<div class="container" id="container">
+	<div class="form-container sign-up-container" style="overflow: auto;">
+            <div class="form">
+			<h2>Create an account for NGO</h2>
+			<input id="fname" type="text" placeholder="fName">
+            <input id="email" type="email" placeholder="Email" >
+            <input id="GovID" type="text" placeholder="Government ID" >
+            <input id="Rdate" type="text" placeholder="Registration Date" >
+            <input id="Work" type="text" placeholder="NGO Workfield" >
+            <p>Address</p>
+            <input id="Locality" type="text" placeholder="Locality" >
+            <input id="city" type="text" placeholder="City" > <input id="State" type="text" placeholder="State" >
+            <input id="Country" type="text" placeholder="Country" > <input id="Pin" type="number" placeholder="Pin" >
+            <p>Bank Detail</p>
+            <input id="BName" type="text" placeholder="Bank Name" >
+            <input id="AccountNO" type="number" placeholder="Account NO" >
+            <input id="IFSC" type="number" placeholder="IFSC CODE" >
+            <p>Password</p>
+			<input id="pass1" type="password" placeholder="Password" >
+            <input id="pass2" type="password" placeholder="Confirm Password" >
+			<button onclick="fun2()"  style="cursor:pointer;">Register</button>
+            </div>
+	</div>
+	<div class="form-container sign-in-container">
+            <div class="form">
+			<h3>Sign in</h3>
+			<input id="username" type="id" placeholder="Username" />
+			<input id="password" type="password" placeholder="Password"
+            />
+            <label id="label" style="color: red;  visibility : hidden" >Invalid Password</label>
+			<a href="#">Forgot your password?</a>
+			<button style="cursor:pointer;" onclick="fun1()">Sign In</button>
+            </div>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+                <h2>Already have an account</h2>
+                <button class="ghost" id="signIn"  style="cursor:pointer;">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h2>Charity begins at home, but should not end there</h2>
+            
+				<button class="ghost" id="signUp"  style="cursor:pointer;">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>
+
+<script>
+    async function fun1() {
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+
+        if (username.value.trim() == "" || password.value.trim() == "") {
+            alert("Blank username or password");
+            username.style.border = "solid 3px red";
+            password.style.border = "solid 3px red";
+            document.getElementById("label").style.visibility = "visible";
+            
+        } else {
+           
+        }
+    }
+
+        async function fun2()
+        {
+            var fname=document.getElementById('fname');
+            var email=document.getElementById('email');
+            var GovID=document.getElementById('GovID');
+            var Rdate=document.getElementById('Rdate');
+            var Work=document.getElementById('Work');
+            var Locality=document.getElementById('Locality');
+            var city=document.getElementById('city');
+            var state=document.getElementById('State');
+            var country=document.getElementById('Country');
+            var Pin=document.getElementById('Pin');
+            var BName=document.getElementById('BName');
+            var AccountNO=document.getElementById('AccountNO');
+            var IFSC=document.getElementById('IFSC');
+            var pass1=document.getElementById('pass1');
+            var pass2=document.getElementById('pass2');
+
+            if(fname==""||email==""||GovID==""||Rdate==""||Work==""||Locality==""||city==""||state==""
+            ||country==""||Pin=="" ||BName==""||AccountNO==""||IFSC==""||pass1==""||pass2=="")
+            alert("Empty column ");
+            else if( pass1.value != pass2.value) { 
+            alert ("Passwords do not match")
+            }
+        else{
+           
+        }
+        
+        }
+</script>
+
+</html>
