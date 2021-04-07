@@ -1,13 +1,16 @@
 var express = require('express');
+const { renderSync } = require('node-sass');
 var router = express.Router();
-var db=require('../lib/db');//where you have saved the db.js
+// var db = require('../lib/db');//where you have saved the db.js
+const connection = require('./controllers/connection');
+const executeAndCheck = connection.executeAndCheck;
 router.get('/register', function(req, res, next) {
   res.render('registration-form');
 });
 // to store user input detail on post request
 router.post('/register', function(req, res, next) {
     //the value(name="") which you have put in the form  to be used after body.
-    inputData ={
+  let inputData = {
         ngo_name: req.body.ngo_name,
         email_address: req.body.email_address,
         ngo_password: req.body.password,
@@ -22,14 +25,18 @@ router.post('/register', function(req, res, next) {
  if(inputData.confirm_password != inputData.password){
     var msg ="Password & Confirm Password is not Matched";
  }else{
-     
-    // save users data into database
     var sql = 'INSERT INTO ngosignup SET ?';
+
+   let check = await executeAndCheck(sql, inputData);
+   // if(check) {
+      // res.render('')
+   // }
+    /*// save users data into database
    db.query(sql, inputData, function (err, data) {
       if (err) throw err;
            });
   var msg ="Your are successfully registered";
- }
+ }*/
  res.render('registration-form',{alertMsg:msg});// the form address inside render
 });
 module.exports = router;

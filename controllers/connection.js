@@ -1,3 +1,4 @@
+const { query } = require('express');
 const mysql = require('mysql');
 require('dotenv').config();
 
@@ -17,4 +18,22 @@ const executeQuery = async (query)=> {
     })
 }
 
-module.exports = {connection, executeQuery};
+const executeAndReturn = async (query)=> {
+    await connection.query(query, (err, result) => {
+        if (err)
+        throw err
+        else
+        return result;
+    })
+}
+
+const executeAndCheck = async (query, checkData) => {
+    await connection.query(query, checkData, (err, result) => {
+        if (err)
+        throw err;
+        else
+        return 1;
+    })
+}
+
+module.exports = {connection, executeQuery, executeAndReturn, executeAndCheck};
