@@ -33,8 +33,8 @@ router.get('/', async function(req, res, next) {
 
 router.post('/',async (req,res)=> {
   //disbale safe mode and then the below query for update will run
-  const {fname, lname, email, password, phoneNumber, address} = req.body;
-  let query = `update ngo.user set fname = "${fname}" ,  lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${email}" `
+  const {fname, lname, email, password, phoneNumber, address} = req.body.info;
+  let query = `update ngo.user set fname = "${fname}" ,  lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${req.session.userEmail}" `
   await execute(query);
 })
 
