@@ -19,13 +19,16 @@ const executeQuery = async (query)=> {
 }
 
 const executeAndReturn = async (query)=> {
-    connection.query(query, async (err, result) => {
+    await console.log('Reached HEre');
+    const ans=await connection.query(query, async (err, result) => {
         if (err)
             throw err;
         else {
+           await  console.log('Result is ',result);
              return result;
         }
     })
+    return ans;
 }
 
 const executeAndCheck = async (query, checkData) => {
