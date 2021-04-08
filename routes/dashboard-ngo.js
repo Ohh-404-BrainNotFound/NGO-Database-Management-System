@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
+const verify = require("../middleware/verify")
 
-router.get('/', function(req, res, next) {
+router.get('/', verify , (req, res, next) => {
   const {isNgoLoggedIn, ngoEmail} = req.session;
   if(isNgoLoggedIn) {
-    //parse ngoEmail to ngo-dashboard
     res.render('./dashboard/home-ngo',{})
   } else {
     res.redirect('/login')
