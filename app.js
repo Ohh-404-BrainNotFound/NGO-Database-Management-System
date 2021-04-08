@@ -24,7 +24,7 @@ const donorUser = require('./routes/donor-user')
 const ngologinRouter = require('./routes/ngo-login')
 const ngoRegister = require('./routes/ngo-signup');
 const ngoJoin = require('./routes/ngoJoinForm');
-
+const contactRouter = require('./routes/contact');
 var app = express();
 
 // view engine setup
@@ -66,6 +66,7 @@ app.use('/donor-user',donorUser);
 app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
 app.use('/dashboard/ngo-list/form',ngoJoin);
+app.use('/contact',contactRouter);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});

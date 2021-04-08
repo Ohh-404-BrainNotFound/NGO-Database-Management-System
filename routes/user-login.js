@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-// const connectionModule = require('../controllers/connection')
-// const executeAndReturn = connectionModule.executeAndReturn;
 const { query } = require('express');
 const mysql = require('mysql');
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 
 const connection = mysql.createConnection({
         host: 'localhost',
@@ -29,15 +28,18 @@ router.post("/", async(req,res) => {
         throw err
         }
         else{
-        // return result;
         req.session.ok = "ok";
         if(result.length > 0) {
             req.session.isUserLoggedIn = true;
-            req.session.ok = req.session.ok + "0k";
             console.log(result);
+            const mail = result[0].email;
             // console.log(req.session.ok);
             req.session.userEmail = emailAddress;
             console.log("authenticated");
+            var token = jwt.sign({ mail }, process.env.secret, {
+              expiresIn: 86400 // expires in 24 hours
+            });
+            res.status(200).send({ auth: true, token: token });
             res.redirect('/dashboard-user');
         }
     }

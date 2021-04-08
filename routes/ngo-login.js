@@ -1,6 +1,7 @@
 const express = require('express');
 
 var router = express.Router();
+const jwt = require('jsonwebtoken');
 // const connection = require('../controllers/connection');
 // const executeAndReturn = connection.executeAndReturn;
 // const util = require('../controllers/utls');
@@ -36,9 +37,14 @@ router.post('/', async (req, res) => {
       else{
       // return result;
       if(result.length > 0) {
-          // req.session.isUserLoggedIn = true;
-          // res.session.userEmail = emailAddress;
+          req.session.isNgoLoggedIn = true;
+          res.session.ngoEmail = emailAddress;
           console.log("authenticated");
+          var token = jwt.sign({ emailAddress }, process.env.secret, {
+            expiresIn: 86400 // expires in 24 hours
+          });
+          res.status(200).send({ auth: true, token: token });
+          res.redirect('/dashboard-ngo');
       }
   }
   })
