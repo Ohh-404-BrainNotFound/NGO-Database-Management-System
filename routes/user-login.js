@@ -1,9 +1,11 @@
 const express = require('express');
+
 const router = express.Router();
 const { query } = require('express');
 const mysql = require('mysql');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const { executeAndReturn } = require('../controllers/connection');
 
 const connection = mysql.createConnection({
         host: 'localhost',
@@ -18,17 +20,19 @@ router.get("/", async (req, res, next) => {
     res.render('login');
 });
 
-router.post("/", async(req,res) => {
+router.post("/", async (req,res) => {
     let emailAddress = req.body.email;
     let password = req.body.password;
     let query = `SELECT * FROM ngo.user WHERE email = "${emailAddress}" AND password = "${password}"; `;
-    await connection.query(query, (err, result) => {
+    await connection.query(query, async (err, result) => {
         if (err) {
             res.render('login',{});
         throw err
         }
         else{
-        req.session.ok = "ok";
+           const sql='SELECT * from ngo.user'
+    let userInfo = await executeAndReturn(sql);
+    await console.log(userInfo);
         if(result.length > 0) {
             req.session.isUserLoggedIn = true;
             console.log(result);
@@ -44,17 +48,18 @@ router.post("/", async(req,res) => {
         }
     }
     })
-    //console.log(sql);
-    let userInfo = await executeAndReturn(sql);
-    if(userInfo.length > 0) {
-      req.session.isUserLoggedIn = true;
-      res.session.userEmail = emailAddress;
-      // res.redirect('/dashboard');
-    console.log("authenticated");
-    } else {
-      //parsing appropriate error message
-      res.render('ngo-login',{});
-    }
+    // const sql='SELECT * from ngo.user'
+    // let userInfo = await executeAndReturn(sql);
+    // if(userInfo.length > 0) {
+    //   req.session.isUserLoggedIn = true;
+    //   res.session.userEmail = emailAddress;
+    //   // res.redirect('/dashboard');
+    // console.log("authenticated");
+    // res.render('dashboard',{});
+    // } else {
+    //   //parsing appropriate error message
+    //   res.render('ngo-login',{});
+    // }
 })
 
 module.exports = router;
