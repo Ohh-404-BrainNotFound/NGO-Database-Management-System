@@ -1,12 +1,16 @@
 
 const multer = require('multer');
 
+const currentDirectory = __dirname;
+const uploadDirectory = currentDirectory.slice(0,-12);
+// D:\Academics\Sem-4-DBMS-Project\NGO-dbms-backend\controllers\
+// \controllers
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, __dirname + "/public/uploads") 
+      cb(null, uploadDirectory + "/public/uploads") 
     },
     filename: function (req, file, cb) {
-      cb(null, "aassasas")
+      cb(null, "aassasas.png")
     }
   })
 

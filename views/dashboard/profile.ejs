@@ -5,19 +5,20 @@
         <img src="./images/arrow.png" alt="arrow"> 
         <h1>Edit Profile</h1> 
     </div>
+    <form action="/profile" method="POST" enctype="multipart/form-data">
     <div class="profile__section">
     <div class="profile__info">
         <label>First name</label>
         <input type="text" name="fname" id="fname"></input>
 
         <label>last Name</label>
-        <input type="text" name="fname" id="lname"></input>
+        <input type="text" name="lname" id="lname"></input>
 
         <label>Email</label>
-        <input type="text" name="fname" id="email"></input>
+        <input type="text" name="email" id="email"></input>
 
         <label>Phone Number</label>
-        <input type="number" name="phone" id="phone"></input>
+        <input type="number" name="phoneNumber" id="phone"></input>
     </div>
     <div class="profile__infomore">
         <label>Address</label>
@@ -28,9 +29,14 @@
 
         <label>Re-Password</label>
         <input type="text" name="password" id="repassword"></input>
+
+        <label> Add photo </label>
+        <input type="file" name="userimage" id="image" accept="image/*" required></input>
     </div>
     </div>
-    <button class="btn-update" onclick="updateInfo()">Update</button>
+    <button class="btn-update" >Update</button>
+</form>
+<img  height="240px" style="display: none;" alt="user image" id="userimage" />
 </div>
 
 <script>
@@ -44,10 +50,28 @@
             document.getElementById('password').value = data.password;
             document.getElementById('address').value = data.address;
             document.getElementById('phone').value = data.phoneNumber;
-        },500)
+        },500);
     }
 
-    const updateInfo = () => {
+    const displayImage = () => {
+        console.log("ok");
+        if(this.files && this.files[0]){
+                let reader = new FileReader();
+                reader.onload =(e)=>{
+                    console.log(e.target.result);
+                    userImage.setAttribute("src",e.target.result);
+                    userImage.style.display = "block";
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+    }
+
+    var display = document.getElementById('image');
+    var userImage = document.getElementById('userimage');
+    display.addEventListener('change',() => {displayImage})
+
+
+   /* const updateInfo = () => {
         let updatedData = {};
         updatedData.fname = document.getElementById('fname').value;
         updatedData.lname = document.getElementById('lname').value;
@@ -64,5 +88,5 @@
             JSON.stringify({
                 info: updatedData, 
             })); 
-            }
+            }*/
 </script>
