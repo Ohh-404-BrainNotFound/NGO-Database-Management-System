@@ -41,3 +41,25 @@ if(Address!="")
 s+='Address = ${value5}';
 s+='where Email = ${email}';
 -- and then we will execute the query
+
+-- donor queries 
+create table donor(
+donor_id int(125) primary key not null,
+donor_name varchar(125) not null,
+user_email varchar(125)  not null,
+amount int(125) not null,
+ngo_name varchar(125) not null,
+regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+constraint foreign Key(user_email) references user(email) on delete cascade on update cascade 
+);
+
+create table nog_donor_record(
+donor_id int(125) primary key not null,
+donor_name varchar(125) not null,
+ngo_id int(125) not null,
+amount int(125) not null,
+ngo_name varchar(125) not null,
+regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+constraint foreign Key(ngo_id) references ngodata(ngo_mail) on delete cascade on update cascade 
+)
+

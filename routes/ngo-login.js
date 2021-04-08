@@ -37,12 +37,12 @@ router.post('/', async (req, res) => {
       // return result;
       if(result.length > 0) {
           req.session.isNgoLoggedIn = true;
-          res.session.ngoEmail = emailAddress;
-          console.log("authenticated");
+          req.session.ngoEmail = emailAddress;
+          console.log("authenticated");/*
           var token = jwt.sign({ emailAddress }, process.env.secret, {
             expiresIn: 86400 // expires in 24 hours
           });
-          res.status(200).send({ auth: true, token: token });
+          res.status(200).send({ auth: true, token: token });*/
           res.redirect('/dashboard-ngo');
       }
   }

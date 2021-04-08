@@ -35,11 +35,11 @@ router.post("/", async(req,res) => {
             const mail = result[0].email;
             // console.log(req.session.ok);
             req.session.userEmail = emailAddress;
-            console.log("authenticated");
+            /*console.log("authenticated");
             var token = jwt.sign({ mail }, process.env.secret, {
               expiresIn: 86400 // expires in 24 hours
             });
-            res.status(200).send({ auth: true, token: token });
+            res.status(200).send({ auth: true, token: token });*/
             res.redirect('/dashboard-user');
         }
     }
