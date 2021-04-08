@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const port=5000||process.env.PORT;
 
 const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
@@ -69,7 +70,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000,(req,res)=>{
+app.listen(port,(req,res)=>{
   console.log("Server is running");
 })
 
