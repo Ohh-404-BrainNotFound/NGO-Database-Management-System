@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const port=5000||process.env.PORT;
 var session = require('express-session');
 require('dotenv').config();
 
@@ -21,6 +22,7 @@ const ngoRouter = require('./routes/ngo');
 const donorUser = require('./routes/donor-user')
 const ngologinRouter = require('./routes/ngo-login')
 const ngoRegister = require('./routes/ngo-signup');
+const ngoJoin = require('./routes/ngoJoinForm');
 var app = express();
 
 // view engine setup
@@ -57,6 +59,7 @@ app.use('/ngo',ngoRouter);
 app.use('/donor-user',donorUser);
 app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
+app.use('/dashboard/ngo-list/form',ngoJoin);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});
@@ -76,7 +79,7 @@ app.use(function(req, res, next) {
 //   res.render('error');
 // });
 
-app.listen(3000,(req,res)=>{
+app.listen(port,(req,res)=>{
   console.log("Server is running");
 })
 
