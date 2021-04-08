@@ -3,12 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const port = 3000||process.env.PORT;
+
+const port=5000||process.env.PORT;
 var session = require('express-session');
 require('dotenv').config();
 
-const landingRouter  = require('./routes/landing')
 const bodyParser = require('body-parser')
+const landingRouter  = require('./routes/landing')
 const loginRouter  = require("./routes/user-login")
 const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
@@ -42,7 +43,11 @@ app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
 app.use(cookieParser());
-app.use(session({secret: process.env.secret }));
+app.use(session({
+  secret: process.env.secret,
+  resave: true,
+  saveUninitialized: true
+ }));
 
 // app.use('/', registrationRouter);
 // app.use('/', dashboardRouter);

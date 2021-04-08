@@ -44,6 +44,17 @@ router.post("/", async(req,res) => {
         }
     }
     })
+    //console.log(sql);
+    let userInfo = await executeAndReturn(sql);
+    if(userInfo.length > 0) {
+      req.session.isUserLoggedIn = true;
+      res.session.userEmail = emailAddress;
+      // res.redirect('/dashboard');
+    console.log("authenticated");
+    } else {
+      //parsing appropriate error message
+      res.render('ngo-login',{});
+    }
 })
 
 module.exports = router;
