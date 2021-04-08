@@ -1,0 +1,16 @@
+Features to be done this week:
+
+1. Enable NGO login: hari Om   done 
+2. NGO signup service: Nitanshu  done 
+3. Once NGo signed up display that NGO information to users pages. for each Like Donations, Members etc all in UI Dashboard of users.: By Naman
+4. Implement one of more update feature like profile update for NGO or user half done 
+Only schema of update feature by hariom
+5. Also as soon as credentials gets added, Then Dashboard should be visible only.
+6. Implement user application to NGO functionality : By Naman
+7. UI(Front end code writing) for profile update of NGO and (Front end code writing) enhancement in current UI for user: By Divyam 
+8. Frontend code implementation of donor page: By Chirag donev
+
+Feature to be done if we left some time (less priority stuff):
+1. Contact us page. frontend done,  
+2. Use cookies to stay logged in 
+3. Implement donation functionality
