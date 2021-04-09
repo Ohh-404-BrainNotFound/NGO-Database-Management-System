@@ -32,7 +32,7 @@ router.post("/", async (req,res) => {
         else{
            const sql='SELECT * from ngo.user'
     let userInfo = await executeAndReturn(sql);
-    await console.log(userInfo);
+    // await console.log("oye",userInfo);
         if(result.length > 0) {
             req.session.isUserLoggedIn = true;
             console.log(result);
@@ -46,8 +46,8 @@ router.post("/", async (req,res) => {
             res.status(200).send({ auth: true, token: token });*/
             res.redirect('/dashboard-user');
         }
-    }
-    })
+    // }
+    // })
     // const sql='SELECT * from ngo.user'
     // let userInfo = await executeAndReturn(sql);
     // if(userInfo.length > 0) {
@@ -59,7 +59,8 @@ router.post("/", async (req,res) => {
     // } else {
     //   //parsing appropriate error message
     //   res.render('ngo-login',{});
-    // }
+    }
+})
 })
 
 module.exports = router;
