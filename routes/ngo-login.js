@@ -1,25 +1,9 @@
 const express = require('express');
-
 var router = express.Router();
 const jwt = require('jsonwebtoken');
-// const connection = require('../controllers/connection');
-// const executeAndReturn = connection.executeAndReturn;
-// const util = require('../controllers/utls');
-// const sleep = util.sleep;
-
-const { query } = require('express');
-const mysql = require('mysql');
+const connection = require('../controllers/connection');
+const executeAndReturn = connection.executeAndReturn;
 require('dotenv').config();
-
-const connection = mysql.createConnection({
-        host: 'localhost',
-        user: process.env.user,
-        password: process.env.password,
-        port: 3306
-      }
-)
-
-
 
 router.get('/', (req, res, next) => {
   res.render('ngo-login');//login page name
@@ -30,37 +14,20 @@ router.post('/', async (req, res,next) => {
     let password = req.body.password;
     console.log("ayya");
     let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${emailAddress}" AND ngo_password = "${password}" `;
-    await connection.query(query, (err, result) => {
-      if (err) {
-          res.render('login',{});
-      throw err
-      }
-      else{
-      // return result;
-      if(result.length > 0) {
-          req.session.isNgoLoggedIn = true;
-<<<<<<< HEAD
-          res.session.ngoEmail = emailAddress;
-          console.log("authenticated");
-          // var token = jwt.sign({ emailAddress }, process.env.secret, {
-          //   expiresIn: 86400 // expires in 24 hours
-          // });
-          res.
-          status(200)
-          send({ auth: true, token: token });  
-          next();
-=======
-          req.session.ngoEmail = emailAddress;
-          console.log("authenticated");/*
-          var token = jwt.sign({ emailAddress }, process.env.secret, {
-            expiresIn: 86400 // expires in 24 hours
-          });
-          res.status(200).send({ auth: true, token: token });*/
-          res.redirect('/dashboard-ngo');
->>>>>>> f04a0668d351edf2b0decec6b6bee65be75416b7
-      }
-  }
-  })
-})
+    let ngoInfo = await executeAndReturn(query);
+    if(ngoInfo.length > 0) {
+      req.session.isNgoLoggedIn = true;
+      req.session.ngoEmail = emailAddress;
+      console.log("authenticated");
+      res.redirect('/dashboard-ngo');
+      // var token = jwt.sign({ emailAddress }, process.env.secret, {
+      //   expiresIn: 86400 // expires in 24 hours
+      // });
+      // res.
+      // status(200)
+      // send({ auth: true, token: token });  
+      // next();
+    }
+  });
 
 module.exports = router;
