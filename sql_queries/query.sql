@@ -21,6 +21,18 @@ create table ngodata (
   regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+create table user (
+  fname varchar(125) not null,
+  lname varchar(30) not null,
+  email varchar(500) primary key not null,
+  password varchar(30) not null,
+  login_type varchar(10) not null,
+  address varchar(125) not null,
+  regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  image varchar(124) not null,
+  phoneNumber int(12) unsigned not null,
+);
+
 --query to update the user data:
 --if all the value is to be changed
 update signup
@@ -41,3 +53,27 @@ if(Address!="")
 s+='Address = ${value5}';
 s+='where Email = ${email}';
 -- and then we will execute the query
+
+-- donor queries 
+create table donor(
+donor_id varchar(30) primary key not null,
+donor_name varchar(125) not null,
+user_email varchar(125)  not null,
+amount int(125) not null,
+ngo_name varchar(125) not null,
+donordate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+constraint foreign Key(user_email) references user(email) on delete cascade on update cascade 
+);
+--donor data ==  regdate
+
+alter table nog_donor_record;
+create table ngo_donor_record(
+donor_id varchar(30) primary key not null,
+donor_name varchar(125) not null,
+ngo_id varchar(120) not null,
+amount int(125) not null,
+ngo_name varchar(125) not null,
+regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+constraint foreign Key(ngo_id) references ngodata(ngo_mail) on delete cascade on update cascade 
+);
+

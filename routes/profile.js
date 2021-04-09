@@ -36,7 +36,6 @@ router.get('/', async function(req, res, next) {
 
 router.post('/',upload.single('userimage') ,async (req,res)=> {
   console.log(req.file);
-  //disbale safe mode and then the below query for update will run
   const {fname, lname, email, password, phoneNumber, address} = req.body;
   let query = `update ngo.user set fname = "${fname}" ,  lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${req.session.userEmail}" `
   await execute(query);
@@ -44,13 +43,8 @@ router.post('/',upload.single('userimage') ,async (req,res)=> {
     img: fs.readFileSync(req.file.path),
     file_name: req.file.filename
   };
-  var imgQuery = await connection.query(`update ngo.user SET userimage ? where email = ${req.session.userEmail}`, userImage, function(err,
-    result) {
-      if(err)
-      console.log(err);
-    console.log(result);
-  });
-
+  var imgQuery = `update ngo.user SET image = "${userImage.file_name}" where email = "${req.session.userEmail}" `
+  await execute(imgQuery);
 })
 
 module.exports = router;

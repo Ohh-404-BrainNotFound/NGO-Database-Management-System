@@ -1,0 +1,66 @@
+<%- include('home-user.ejs') -%>
+<link rel="stylesheet" href="./stylesheets/profile.css" >
+<div class="profile__container">
+    <div class="profile__name">
+        <img src="./images/arrow.png" alt="arrow"> 
+        <h1>Edit Profile</h1> 
+    </div>
+    <form action="/ngo-profile" method="POST" enctype="multipart/form-data">
+    <div class="profile__section">
+        <form action="/profile-ngo" method="POST" enctype="multipart/form-data" >
+    <div class="profile__info">
+        <label>Ngo name</label>
+        <input type="text" name="ngo_name" id="ngo_name"></input>
+
+        <label>government id</label>
+        <input type="text" name="govtid" id="govtid"></input>
+
+        <label>Bank Name</label>
+        <input type="text" name="bank_name" id="bank_name"></input>
+
+        <label>Account no</label>
+        <input type="text" name="acc_no" id="acc_no"></input>
+
+        <label>IFSC code</label>
+        <input type="text" name="ifsc_code" id="ifsc_code"></input>
+
+    </div>
+    <div class="profile__infomore">
+        <label>About Ngo</label>
+        <input type="text" name="info" id="info"></input>
+
+        <label>Address</label>
+        <input type="text" name="address" id="address"></input>
+
+        <label>Password</label>
+        <input type="text" name="password" id="password"></input>
+
+        <label>Re-Password</label>
+        <input type="text" name="password" id="repassword"></input>
+
+        <label> Add photo </label>
+        <input type="file" name="ngoimage" id="image" accept="image/*" ></input>
+    </div>
+    </div>
+    <button class="btn-update" type="submit">Update</button>
+</form
+>
+<img  height="240px" style="display: none;" alt="user image" id="userimage" />
+</div>
+
+<script>
+    window.onload = () => {
+       var ngoData = '<%- JSON.stringify(ngoInfo) %>';
+        setTimeout(()=> {
+            let data = JSON.parse(ngoData); 
+            document.getElementById('ngo_name').value = data.ngo_name;
+            document.getElementById('bank_name').value = data.ngo_bank;
+            document.getElementById('password').value = data.ngo_password;
+            document.getElementById('address').value = data.ngo_address;
+            document.getElementById('ifsc_code').value = data.ngo_ifsccode;
+            document.getElementById('acc_no').value = data.ngo_account;
+            document.getElementById('govtid').value = data.government_id;
+            document.getElementById('info').value = data.ngo_info;
+        },500);
+    }
+</script>

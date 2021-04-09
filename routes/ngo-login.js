@@ -28,7 +28,8 @@ router.get('/', (req, res, next) => {
 router.post('/', async (req, res,next) => {
     let emailAddress = req.body.email_address;
     let password = req.body.password;
-    let query = `SELECT * FROM ngo.ngodata WHERE ngo_email = "${emailAddress}" AND ngo_password = "${password}" `;
+    console.log("ayya");
+    let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${emailAddress}" AND ngo_password = "${password}" `;
     await connection.query(query, (err, result) => {
       if (err) {
           res.render('login',{});
@@ -38,6 +39,7 @@ router.post('/', async (req, res,next) => {
       // return result;
       if(result.length > 0) {
           req.session.isNgoLoggedIn = true;
+<<<<<<< HEAD
           res.session.ngoEmail = emailAddress;
           console.log("authenticated");
           // var token = jwt.sign({ emailAddress }, process.env.secret, {
@@ -47,6 +49,15 @@ router.post('/', async (req, res,next) => {
           status(200)
           send({ auth: true, token: token });  
           next();
+=======
+          req.session.ngoEmail = emailAddress;
+          console.log("authenticated");/*
+          var token = jwt.sign({ emailAddress }, process.env.secret, {
+            expiresIn: 86400 // expires in 24 hours
+          });
+          res.status(200).send({ auth: true, token: token });*/
+          res.redirect('/dashboard-ngo');
+>>>>>>> f04a0668d351edf2b0decec6b6bee65be75416b7
       }
   }
   })
