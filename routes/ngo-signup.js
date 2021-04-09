@@ -1,8 +1,8 @@
 var express = require('express');
-var router = express.Router();
 const connectionModule  = require('../controllers/connection');
-const execute = connectionModule.executeQuery;
 
+const execute = connectionModule.executeQuery;
+var router = express.Router();
 router.post('/', async function(req, res, next) {
   var data = req.body;
   console.log(data);

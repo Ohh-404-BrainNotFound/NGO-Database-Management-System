@@ -3,7 +3,7 @@
 
 <head>
     <title>NGO</title>
-    <link rel="stylesheet" href="stylesheets/login.css">
+    <link rel="stylesheet" href="/stylesheets/login.css">
 </head>
 
 <body>
@@ -12,15 +12,17 @@
 	<div class="form-container sign-up-container" style="overflow: auto;">
             <div class="form">
 			<h1>Create Account</h1>
-			<input id="fname" type="text" placeholder="fName">
-            <input id="lname" type="text" placeholder="lName" >
-			<input id="email" type="email" placeholder="Email" >
-			<input id="pass1" type="password" placeholder="Password" >
+            <form method="POST" action="/dashboard/ngo-list/form">
+			<input id="fname" type="text" placeholder="fName" name="fName">
+            <input id="lname" type="text" placeholder="lName" name="lName">
+			<input id="email" type="email" placeholder="Email" name="email">
+			<input id="pass1" type="password" placeholder="Password" name="password">
             <input id="pass2" type="password" placeholder="Rewrite Password" >
-            <textarea  cols="38" rows="10">Why you want to Join this NGO</textarea><br>
-            <label for="userphoto">Upload your Photo</label>
-            <input type="file" accept="image/*" id="userphoto" name="userphoto">
-			<button onclick="fun2()"  style="cursor:pointer;">Sign Up</button>
+            <textarea  cols="38" rows="10" id="description" name="description">Why you want to Join this NGO</textarea><br>
+            <!-- <label for="userphoto">Upload your Photo</label>
+            <input type="file" accept="image/*" id="userphoto" name="userphoto"> -->
+			<button style="cursor:pointer;" type="submit">Sign Up</button>
+        </form>
             </div>
 	</div>
 	<div class="form-container sign-in-container">
@@ -58,61 +60,5 @@
     </footer>
 </body>
 
-<script>
-
-    window.onload=()=>{
-        document.getElementById('mydate').value=new Date().toISOString().substr(0,10);
-    }
-</script>
-
-<script>
-        async function fun2()
-        {
-            var pass1=document.getElementById('pass1');
-            var pass2=document.getElementById('pass2');
-            var fname=document.getElementById('fname');
-            var lname=document.getElementById('lname');
-            var email=document.getElementById('email');
-            var arr=document.getElementsByName('login_type');
-            var login_type='user';
-            for(i=0;i<arr.length;i++)
-            {
-                if(arr[i].checked)
-                {
-                    login_type=arr[i].value;
-                    break;
-                }
-            }
-            var date=document.getElementById('mydate').value;
-            //date=date.substr(0,4)+'-'+date.substr(5,2)+'-'+date.substr(8,2)
-            var address=document.getElementById('address');
-            var contact=document.getElementById('phoneNumber');
-            
-            if(pass1==""||pass2==""||fname==""||lname==""||email==""||contact==""||address=='')
-            alert("Enter Values ");
-            else if( pass1.value != pass2.value) { 
-            alert ("Passwords do not match")
-            }
-        else{
-            const xml = new XMLHttpRequest();
-            const url = "/signup";
-            xml.open('POST',url,true);
-            await xml.setRequestHeader("content-type",'application/json');
-           var ob1 = await xml.send(JSON.stringify({
-                fname:fname.value,
-                lname:lname.value,
-                pass:pass1.value,
-                email:email.value,
-                login_type:login_type,
-                number:contact.value,
-                date:date,
-                address:address.value
-            })
-            );
-            window.location.href="/";
-        }
-        
-        }
-</script>
 
 </html>

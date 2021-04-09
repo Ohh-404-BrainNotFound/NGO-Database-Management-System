@@ -25,7 +25,7 @@ router.get('/', (req, res, next) => {
   res.render('ngo-login');//login page name
 });
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res,next) => {
     let emailAddress = req.body.email_address;
     let password = req.body.password;
     let query = `SELECT * FROM ngo.ngodata WHERE ngo_email = "${emailAddress}" AND ngo_password = "${password}" `;
@@ -40,11 +40,13 @@ router.post('/', async (req, res) => {
           req.session.isNgoLoggedIn = true;
           res.session.ngoEmail = emailAddress;
           console.log("authenticated");
-          var token = jwt.sign({ emailAddress }, process.env.secret, {
-            expiresIn: 86400 // expires in 24 hours
-          });
-          res.status(200).send({ auth: true, token: token });
-          res.redirect('/dashboard-ngo');
+          // var token = jwt.sign({ emailAddress }, process.env.secret, {
+          //   expiresIn: 86400 // expires in 24 hours
+          // });
+          res.
+          status(200)
+          send({ auth: true, token: token });  
+          next();
       }
   }
   })
