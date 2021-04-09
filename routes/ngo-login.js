@@ -28,7 +28,8 @@ router.get('/', (req, res, next) => {
 router.post('/', async (req, res) => {
     let emailAddress = req.body.email_address;
     let password = req.body.password;
-    let query = `SELECT * FROM ngo.ngodata WHERE ngo_email = "${emailAddress}" AND ngo_password = "${password}" `;
+    console.log("ayya");
+    let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${emailAddress}" AND ngo_password = "${password}" `;
     await connection.query(query, (err, result) => {
       if (err) {
           res.render('login',{});
