@@ -21,6 +21,18 @@ create table ngodata (
   regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+create table user (
+  fname varchar(125) not null,
+  lname varchar(30) not null,
+  email varchar(500) primary key not null,
+  government_id varchar(125) not null,
+  login_type varchar(10) not null,
+  address varchar(125) not null,
+  regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  image varchar(124) not null,
+  phoneNumber int(12) unsigned not null
+);
+
 --query to update the user data:
 --if all the value is to be changed
 update signup
@@ -56,7 +68,7 @@ constraint foreign Key(user_email) references user(email) on delete cascade on u
 create table nog_donor_record(
 donor_id int(125) primary key not null,
 donor_name varchar(125) not null,
-ngo_id int(125) not null,
+ngo_id varchar(120) not null,
 amount int(125) not null,
 ngo_name varchar(125) not null,
 regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
