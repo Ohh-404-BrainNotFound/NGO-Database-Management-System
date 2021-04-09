@@ -25,12 +25,12 @@ create table user (
   fname varchar(125) not null,
   lname varchar(30) not null,
   email varchar(500) primary key not null,
-  government_id varchar(125) not null,
+  password varchar(30) not null,
   login_type varchar(10) not null,
   address varchar(125) not null,
   regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
   image varchar(124) not null,
-  phoneNumber int(12) unsigned not null
+  phoneNumber int(12) unsigned not null,
 );
 
 --query to update the user data:
@@ -56,22 +56,24 @@ s+='where Email = ${email}';
 
 -- donor queries 
 create table donor(
-donor_id int(125) primary key not null,
+donor_id varchar(30) primary key not null,
 donor_name varchar(125) not null,
 user_email varchar(125)  not null,
 amount int(125) not null,
 ngo_name varchar(125) not null,
-regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+donordate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 constraint foreign Key(user_email) references user(email) on delete cascade on update cascade 
 );
+--donor data ==  regdate
 
-create table nog_donor_record(
-donor_id int(125) primary key not null,
+alter table nog_donor_record;
+create table ngo_donor_record(
+donor_id varchar(30) primary key not null,
 donor_name varchar(125) not null,
 ngo_id varchar(120) not null,
 amount int(125) not null,
 ngo_name varchar(125) not null,
 regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 constraint foreign Key(ngo_id) references ngodata(ngo_mail) on delete cascade on update cascade 
-)
+);
 

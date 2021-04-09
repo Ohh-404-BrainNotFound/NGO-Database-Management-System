@@ -36,7 +36,7 @@ router.post("/", async (req,res) => {
         if(result.length > 0) {
             req.session.isUserLoggedIn = true;
             console.log(result);
-            const mail = result[0].email;
+            // const mail = result[0].email;
             // console.log(req.session.ok);
             req.session.userEmail = emailAddress;
             /*console.log("authenticated");
