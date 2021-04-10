@@ -7,7 +7,7 @@
             <img class="administrator__img" src="./images/profile.png" alt="profile">
             <div class="administrator__name">
                 <p>User</p>
-                <h1>Nitanshu Lokhande</h1>
+                <h1><%= name %></h1>
             </div>
         </div>
         <hr class="profile__hr" />
@@ -28,3 +28,9 @@
         </div>
     </div>     
 </div>
+<script>
+    function getname(name)
+    {
+        return JSON.stringify(name);
+    }
+</script>
