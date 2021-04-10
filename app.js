@@ -27,6 +27,7 @@ const ngoJoin = require('./routes/ngoJoinForm');
 const contactRouter = require('./routes/contact');
 const ngoProfile = require('./routes/ngo-profile');
 const userDonations = require('./routes/donate-user');
+const thankyouRouter = require('./routes/success');
 
 var app = express();
 
@@ -72,6 +73,7 @@ app.use('/dashboard/ngo-list/form',ngoJoin);
 app.use('/contact',contactRouter);
 app.use('/ngo-profile',ngoProfile);
 app.use('/donations',userDonations);
+app.use('/success',thankyouRouter);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});
