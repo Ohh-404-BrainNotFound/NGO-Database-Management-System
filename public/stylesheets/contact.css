@@ -1,16 +1,25 @@
-.column {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.row {
+  display: flex;
+  width:50vw;
+  justify-content: space-between;
+  align-items: space-between;
+}
+.column img {
+  display: block;
+  width: 50px;
+  height: 50px;
+}
+
+/* .column {
     float: left;
     width: 3%;
     height: 3%;
     padding: 10px;
   margin-left: 300px;
     
-  }
-  .row::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+  } */
 #T1
 {
 	color: white;
@@ -30,7 +39,7 @@ body{
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'roboto', sans-serif;
 	height: 120vh;
 
 }
@@ -66,18 +75,10 @@ h5
 
 p {
 	font-size: 14px;
-    color: rgb(14, 12, 3);
+
 	padding: 0px;
     margin-top: 0px;
 }
-
-/* a {
-	color: #333;
-	font-size: 14px;
-	text-decoration: none;
-	margin: 15px 0;
-} */
-
 #btn1 {
 	border-radius: 20px;
 	border: 1px solid #f5f8f8;
@@ -120,7 +121,7 @@ input {
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 500px;
+	width:500px;
 	max-width: 100%;
 	min-height: 450px;
    
@@ -141,9 +142,10 @@ input {
     margin-left: 15px;
     margin-top: 10px;
   }
-  #lefthead
+  .lefthead
   {
     color: #0E254A;
+    font-weight: bolder;
   }
   
   .name{
@@ -156,7 +158,10 @@ input {
   .placeholder
 {
     position: relative;
-    width: 200px;
+    width: 220px;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px solid #6b03c0;
     
 }
 .placeholder1
@@ -186,11 +191,15 @@ input {
     position: relative;
 }
 
-#placeh
+.placeh
 {
   position: absolute;
-  right: 40px;
-  top: 5px;
+  right: 10px;
+  top: 20px;
+  border: 1.5px solid #6b03c0; 
+  border-radius: 10px;
+  font-family: 'roboto',sans-serif;
+  resize: none;
 }
 #imag1
 {
@@ -222,3 +231,15 @@ width: 600px;
 
 
 
+
+.subheading {
+  color: #fff;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.white {
+  color: #fff;
+  margin-top:10px;
+  letter-spacing: 1px;
+}
