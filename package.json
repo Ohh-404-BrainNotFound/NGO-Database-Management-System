@@ -27,7 +27,8 @@
     "mysql": "^2.18.1",
     "node-sass": "^5.0.0",
     "pg": "^8.5.1",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "validatorjs": "^3.22.1"
   },
   "devDependencies": {
     "eslint": "^7.23.0",
