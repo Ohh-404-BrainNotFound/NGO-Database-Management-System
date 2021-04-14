@@ -30,6 +30,7 @@ const userDonations = require('./routes/donate-user');
 const thankyouRouter = require('./routes/success');
 const addMemberRouter = require('./routes/add-member');
 const dbGenerate = require('./routes/db');
+const ngoDetails = require('./routes/ngo-details');
 
 var app = express();
 
@@ -78,6 +79,7 @@ app.use('/donations',userDonations);
 app.use('/success',thankyouRouter);
 app.use('/add-member',addMemberRouter);
 app.use('/db', dbGenerate);
+app.use('/dashboard/ngo-list/ngodetails', ngoDetails);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});
