@@ -5,34 +5,20 @@ const mysql = require('mysql');
 require('dotenv').config();
 const connectModule = require("../controllers/connection");
 const execute = connectModule.executeQuery;
+const { executeAndReturn } = require("../controllers/connection");
 const utils = require('../controllers/utls');
 const upload = utils.upload;
 const fs = require('fs');
-
-const connection = mysql.createConnection({
-        host: 'localhost',
-        user: process.env.user,
-        password: process.env.password,
-        port: 3306
-      }
-)
-
 
 router.get('/', async function(req, res, next) {
   let email = req.session.ngoEmail;
   console.log(email);
   let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${email}" `;
-  await connection.query(query, (err, result) => {
-      if (err) {
-          res.render('ngo-login',{});
-      throw err
-      }
-      else{
-        let ngoInfo = result[0];
-        console.log(ngoInfo);
-       res.render('./dashboard/ngo-profile',{ngoInfo});
-  }
-  })
+  await executeAndReturn(query)
+  .then((data) => {
+    let ngoInfo = data[0];
+    res.render('./dashboard/ngo-profile',{ngoInfo});
+  });
 });
 
 router.post('/',upload.single('ngoimage') ,async (req,res)=> {
@@ -48,6 +34,11 @@ router.post('/',upload.single('ngoimage') ,async (req,res)=> {
     var imgQuery = `update ngo.ngodata SET image = "${ngoImage.file_name}" where email = "${req.session.ngoEmail}" `
     await execute(imgQuery); 
 }
+  })
+
+  router.post('/delete', async (req, res) => {
+    let deleteQuery = `delete from ngo.user where email = "${req.body.ngoEmail}" `;
+    await executeQuery(deleteQuery);
   })
   
 

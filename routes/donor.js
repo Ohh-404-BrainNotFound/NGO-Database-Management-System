@@ -11,8 +11,14 @@ router.get('/', async function(req, res, next) {
   // for development
   const ngoMail = '12@gmail.com';
   const getDonors = `select * from ngo.ngo_donor_record where ngo_id = "${ngoMail}" `;
-  let donationData = await executeAndReturn(getDonors);
-  res.render('./dashboard/donor',{donationData});
+  await executeAndReturn(getDonors)
+  .then((donationData) => {
+    let total = 0;
+    donationData.map((data) => {
+      total += data.amount;
+    })
+    res.render('./dashboard/donor',{donationData, total});
+  })
 });
 
 module.exports = router;

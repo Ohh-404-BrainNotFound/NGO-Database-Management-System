@@ -1,67 +1,16 @@
 <%- include('home-ngo.ejs') -%>
 <link rel="stylesheet" href="./stylesheets/member.css" >
 <div class="member__container">
-    <div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
+    <% memberData.forEach((data) => { %>
+        <div class="member">
+            <div class="member__card">
+                <% let src = "./uploads/" + data.image %>
+                <img src="<%- src %>" class="member__image" />
+                <div class="member__details">
+                    <h1><%- data.designation %> </h1>
+                    <h2><%- data.name %></h2>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div>
-    <div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div>
-    <div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div
-    ><div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div
-    ><div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div>
-    <div class="member">
-        <div class="member__card">
-            <img src="./images/profile.png" />
-            <div class="member__details">
-                <h1>Designer</h1>
-                <h2>Divyam</h2>
-            </div>
-        </div>
-    </div>
+    <% }) %>
 </div>

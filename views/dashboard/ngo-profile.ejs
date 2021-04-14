@@ -1,4 +1,4 @@
-<%- include('home-user.ejs') -%>
+<%- include('home-ngo.ejs') -%>
 <link rel="stylesheet" href="./stylesheets/profile.css" >
 <div class="profile__container">
     <div class="profile__name">
@@ -43,16 +43,17 @@
     </div>
     </div>
     <button class="btn-update" type="submit">Update</button>
-</form
->
-<img  height="240px" style="display: none;" alt="user image" id="userimage" />
+</form>
+<button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 </div>
 
 <script>
+    var email = '';
     window.onload = () => {
        var ngoData = '<%- JSON.stringify(ngoInfo) %>';
         setTimeout(()=> {
-            let data = JSON.parse(ngoData); 
+            let data = JSON.parse(ngoData);
+            email = data.ngo_mail; 
             document.getElementById('ngo_name').value = data.ngo_name;
             document.getElementById('bank_name').value = data.ngo_bank;
             document.getElementById('password').value = data.ngo_password;
@@ -63,4 +64,16 @@
             document.getElementById('info').value = data.ngo_info;
         },500);
     }
+
+    const deleteProfile = () => {
+        const xml = new XMLHttpRequest();
+        const url = "/ngo-profile/delete";
+            xml.open('POST',url,true);
+            await xml.setRequestHeader("content-type",'application/json');
+           var ob1 = await xml.send(JSON.stringify({
+               ngoEmail = email
+           })
+           );       
+        }
+
 </script>

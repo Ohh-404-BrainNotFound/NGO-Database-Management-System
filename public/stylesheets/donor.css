@@ -63,3 +63,8 @@ th, td {
     height: 25px;
     border-radius: 50%;
 }
+
+.total__amount {
+    margin-left: 10%;
+    color: white;
+}

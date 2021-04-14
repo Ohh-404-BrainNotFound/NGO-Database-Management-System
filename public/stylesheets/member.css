@@ -17,6 +17,12 @@
     border-radius: 100px;  
 }
 
+.member__image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
 .member__card {
     display: flex;
     flex-direction: row;

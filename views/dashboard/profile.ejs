@@ -41,7 +41,7 @@
 </div>
 
 <script>
-    const email = '';
+    var email = '';
     window.onload = () => {
        var userData = '<%- JSON.stringify(userInfo) %>';
         setTimeout(()=> {
@@ -79,7 +79,7 @@
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify({
-               userEmail = emaill
+               userEmail = email
            })
            );       
         }
