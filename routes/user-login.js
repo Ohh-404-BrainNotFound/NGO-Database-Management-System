@@ -19,6 +19,7 @@ router.post("/", async (req,res) => {
             req.session.isUserLoggedIn = true;
             console.log(userInfo);
             req.session.userEmail = emailAddress;
+            req.session.fName = userInfo[0].fname;
             /*console.log("authenticated");
             var token = jwt.sign({ mail }, process.env.secret, {
               expiresIn: 86400 // expires in 24 hours
