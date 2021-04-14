@@ -22,7 +22,7 @@ router.get('/', async function(req, res, next) {
 router.post('/',upload.single('userimage') , async (req,res)=> {
   console.log(req.file);
   const {fname, lname, email, password, phoneNumber, address} = req.body;
-  let query = `update ngo.user set fname = "${fname}" ,  lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${req.session.userEmail}" `
+  let query = `update ngo.user set fname = "${fname}"   lname = "${lname}"   password = "${password}"  phoneNumber = "${phoneNumber}"  address = "${address}" where email = "${req.session.userEmail}" `
   await executeQuery(query);
   let userImage = {
     img: fs.readFileSync(req.file.path),
