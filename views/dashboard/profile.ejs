@@ -34,12 +34,14 @@
         <input type="file" name="userimage" id="image" accept="image/*" required></input>
     </div>
     </div>
-    <button class="btn-update" >Update</button>
+    <button class="btn-update">Update</button>
 </form>
+<button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 <img  height="240px" style="display: none;" alt="user image" id="userimage" />
 </div>
 
 <script>
+    const email = '';
     window.onload = () => {
        var userData = '<%- JSON.stringify(userInfo) %>';
         setTimeout(()=> {
@@ -47,6 +49,7 @@
             document.getElementById('fname').value = data.fname;
             document.getElementById('lname').value = data.lname;
             document.getElementById('email').value = data.email;
+            email = data.emaill
             document.getElementById('password').value = data.password;
             document.getElementById('address').value = data.address;
             document.getElementById('phone').value = data.phoneNumber;
@@ -70,7 +73,16 @@
     var userImage = document.getElementById('userimage');
     display.addEventListener('change',() => {displayImage})
 
-
+    const deleteProfile = () => {
+        const xml = new XMLHttpRequest();
+        const url = "/profile/delete";
+            xml.open('POST',url,true);
+            await xml.setRequestHeader("content-type",'application/json');
+           var ob1 = await xml.send(JSON.stringify({
+               userEmail = emaill
+           })
+           );       
+        }
    /* const updateInfo = () => {
         let updatedData = {};
         updatedData.fname = document.getElementById('fname').value;

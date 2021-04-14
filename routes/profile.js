@@ -32,4 +32,9 @@ router.post('/',upload.single('userimage') , async (req,res)=> {
   await execute(imgQuery);
 })
 
+router.post('/delete', async (req, res) => {
+  let deleteQuery = `delete from ngo.user where email = "${req.body.userEmail}" `;
+  await executeQuery(deleteQuery);
+})
+
 module.exports = router;
