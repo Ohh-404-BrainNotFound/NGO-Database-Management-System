@@ -77,3 +77,14 @@ regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
 constraint foreign Key(ngo_id) references ngodata(ngo_mail) on delete cascade on update cascade 
 );
 
+create table ngo_member(
+member_id int(10) primary key not null auto_increment,
+name varchar(125)  not null,
+ngo_mail varchar(125) not null,
+designation varchar(125) not null,
+image varchar(125) not null ,
+constraint foreign key(ngo_mail) references ngodata(ngo_mail) on delete cascade on update cascade
+);
+
+
+

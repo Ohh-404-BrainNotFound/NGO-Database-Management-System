@@ -1,16 +1,16 @@
-<%- include('home-user.ejs') -%>
+<%- include('home-ngo.ejs') -%>
 <link rel="stylesheet" href="./stylesheets/profile.css" >
 <div class="profile__container">
     <div class="profile__name">
         <img src="./images/arrow.png" alt="arrow"> 
         <h1>Add Member</h1> 
     </div>
-    <form action="/ngo-profile" method="POST" enctype="multipart/form-data">
+    <form action="/add-member" method="POST" enctype="multipart/form-data">
     <div class="profile__section">
         <!-- <form action="/add-member" method="POST"> -->
     <div class="profile__info">
         <label>Name</label>
-        <input type="text" name="memberName" id="memberName"></input>
+        <input type="text" name="name" id="memberName"></input>
 
         <label>Email</label>
         <input type="text" name="email" id="email"></input>
@@ -19,7 +19,7 @@
         <input type="text" name="designation" id="designation"></input>
 
         <label>Add Image</label>
-        <input type="file" name="member-image" "></input>
+        <input type="file" name="member-image"></input>
 
     </div>
     </div>
