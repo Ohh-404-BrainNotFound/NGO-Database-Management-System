@@ -1,0 +1,78 @@
+body{
+    background-position: center;
+    background-color: #8E3793;
+    background: -webkit-linear-gradient(to right, #837a85fa, #3e1a4d);
+	background: linear-gradient(to right, #6b03c0, #A73A7B);
+    background-size: cover;
+	font-family: 'Montserrat', sans-serif;
+	height: 80vh;
+
+}
+
+
+.donor_table {
+    margin-top: -53%;
+    margin-left: 25%;
+}
+.header
+{
+    margin-top: 80px;
+    margin-left: 100px;
+    color: white;
+    font-style: italic;     
+}
+#MainDiv
+{
+margin-top: 20px;
+
+}
+.ParentDiv
+{
+    margin-left: 130px;
+  padding: 30px;
+}
+
+.FirstDiv
+{
+    margin-left: 20px;
+    margin-right: 20px;
+    float: left;
+}
+.SecondDiv
+{
+    margin-left: 20px;
+    margin-right: 50px;
+    float: left;
+}
+.ThirdDiv
+{
+    border-left: 2px solid rgb(134, 21, 115);
+  height: 70px;
+    margin-left: 100px;
+    margin-right: 100px;
+    float: left;
+}
+.FourthDiv
+{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+#image
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+h2
+{
+    color: blanchedalmond;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-style: unset;
+}
+
+p
+{
+    color: blanchedalmond;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
