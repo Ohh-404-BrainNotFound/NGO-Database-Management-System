@@ -27,16 +27,13 @@
         <label>Password</label>
         <input type="text" name="password" id="password"></input>
 
-        <label>Re-Password</label>
-        <input type="text" name="password" id="repassword"></input>
-
         <label> Add photo </label>
-        <input type="file" name="userimage" id="image" accept="image/*" required></input>
+        <input type="file" name="userimage" id="image" accept="image/*" ></input>
     </div>
     </div>
     <button class="btn-update">Update</button>
+    <button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 </form>
-<button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 <img  height="240px" style="display: none;" alt="user image" id="userimage" />
 </div>
 
@@ -49,7 +46,7 @@
             document.getElementById('fname').value = data.fname;
             document.getElementById('lname').value = data.lname;
             document.getElementById('email').value = data.email;
-            email = data.emaill
+            email = data.email;
             document.getElementById('password').value = data.password;
             document.getElementById('address').value = data.address;
             document.getElementById('phone').value = data.phoneNumber;
@@ -73,15 +70,15 @@
     var userImage = document.getElementById('userimage');
     display.addEventListener('change',() => {displayImage})
 
-    const deleteProfile = () => {
+    const deleteProfile = async () => {
         const xml = new XMLHttpRequest();
         const url = "/profile/delete";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
-           var ob1 = await xml.send(JSON.stringify({
-               userEmail = email
-           })
-           );       
+            var ob1 = await xml.send(JSON.stringify({
+                userEmail: email
+            })
+            );       
         }
    /* const updateInfo = () => {
         let updatedData = {};

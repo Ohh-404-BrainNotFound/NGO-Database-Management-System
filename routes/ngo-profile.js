@@ -25,20 +25,30 @@ router.post('/',upload.single('ngoimage') ,async (req,res)=> {
     console.log(req.file);
     const {ngo_name, govtid, bank_name, acc_no, ifsc_code, info, address, password  } = req.body;
     let query = `update ngo.ngodata set ngo_name = "${ngo_name}" , government_id = "${govtid}",  ngo_info = "${info}", ngo_ifsccode = "${ifsc_code}", ngo_bank = "${bank_name}", ngo_account = "${acc_no}" ,ngo_password = "${password}" , ngo_address = "${address}" where ngo_mail = "${req.session.ngoEmail}" `
-    await execute(query);
-    if(req.file) {
-    let ngoImage = {
-      img: fs.readFileSync(req.file.path),
-      file_name: req.file.filename
-    };
-    var imgQuery = `update ngo.ngodata SET image = "${ngoImage.file_name}" where email = "${req.session.ngoEmail}" `
-    await execute(imgQuery); 
-}
+    await execute(query)
+    .then(async () => {
+      if(req.file) {
+        let ngoImage = {
+          img: fs.readFileSync(req.file.path),
+          file_name: req.file.filename
+        };
+        var imgQuery = `update ngo.ngodata SET image = "${ngoImage.file_name}" where email = "${req.session.ngoEmail}" `
+        await execute(imgQuery)
+        .then(() => {
+          res.redirect('/dashboard-ngo');
+        }) 
+    }else {
+      res.redirect('/dashboard-user');
+    }
+    })
   })
 
   router.post('/delete', async (req, res) => {
     let deleteQuery = `delete from ngo.user where email = "${req.body.ngoEmail}" `;
-    await executeQuery(deleteQuery);
+    await executeQuery(deleteQuery)
+    .then(() => {
+      res.redirect('/dashboard-ngo');
+    })
   })
   
 
