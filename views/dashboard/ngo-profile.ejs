@@ -35,16 +35,13 @@
         <label>Password</label>
         <input type="text" name="password" id="password"></input>
 
-        <label>Re-Password</label>
-        <input type="text" name="password" id="repassword"></input>
-
         <label> Add photo </label>
         <input type="file" name="ngoimage" id="image" accept="image/*" ></input>
     </div>
     </div>
     <button class="btn-update" type="submit">Update</button>
+    <button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 </form>
-<button class="btn-delete" onclick="deleteProfile()">Delete Profile</button>
 </div>
 
 <script>
@@ -65,13 +62,13 @@
         },500);
     }
 
-    const deleteProfile = () => {
+    const deleteProfile = async () => {
         const xml = new XMLHttpRequest();
         const url = "/ngo-profile/delete";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
            var ob1 = await xml.send(JSON.stringify({
-               ngoEmail = email
+               ngoEmail: email
            })
            );       
         }
