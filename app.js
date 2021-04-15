@@ -79,7 +79,7 @@ app.use('/donations',userDonations);
 app.use('/success',thankyouRouter);
 app.use('/add-member',addMemberRouter);
 app.use('/db', dbGenerate);
-app.use('/dashboard/ngo-list/ngodetails', ngoDetails);
+app.use('/dashboard/ngo-list/ngo', ngoDetails);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});

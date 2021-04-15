@@ -12,7 +12,7 @@
                 <div class="ngo__details">
                     <h1>Designer</h1>
                     <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
-                    <button  role="button" type="button" onclick="seeNGO()" >About</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -21,6 +21,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -29,6 +31,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -37,6 +41,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -45,6 +51,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div
@@ -53,6 +61,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -61,6 +71,8 @@
                 <img src="./images/ngo.png" />
                 <div class="ngo__details">
                     <h1>Designer</h1>
+                    <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
+                    <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
                 </div>
             </div>
         </div>
@@ -69,23 +81,19 @@
 <script>
     function seeNGO() {
     let xhr =new XMLHttpRequest();
-    xhr.open('POST','/dashboard/ngo-list/ngodetails',true);
+    xhr.open('GET','/dashboard/ngo-list/ngo',true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     //! Replace with fetching data from ngo
-    let detailsFromNGO={
-        name:'name',
-        description:'description',
-        'Formed':'Formed',
-    }
+  
+
     xhr.send(
         JSON.stringify({
-            id:1,
-            ...detailsFromNGO,
+            id:3,
         })
     );
     xhr.onload =()=>{
         if(xhr.status ===200 && xhr.readyState ===4){
-            window.location.href="/dashboard/ngo-list/ngodetails"
+            window.location.href="/dashboard/ngo-list/ngo"
         }
     }
     }
