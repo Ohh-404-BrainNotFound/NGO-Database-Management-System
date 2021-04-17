@@ -1,5 +1,75 @@
 <%- include('../partials/header.ejs') -%>
 <%- include('../chore.ejs') -%>
+<style>
+    .donate__container {
+    width: 97%;
+    display: flex;
+    margin-top: 3%;
+    margin-left: 2%;
+    height: 70vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: linear-gradient(to right, #A73AA2, #032e57);
+}
+
+.donate__logo {
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.donate__content {
+    width: 94%;
+    height: 70vh;
+}
+
+.donate__info {
+    display: flex;
+    height: 40vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.donate__name {
+    font-size: 25px;
+    color: white;
+    float: left;
+}
+
+.donate__data {
+    color: white;
+    font-size: 20px;
+}
+
+.donate__btn {
+    border-radius: 40px;
+    background-color: #9B3979;
+    color: white;
+    font-size: 20px;
+    padding: 6px 10px;
+    border: none;
+    width: 15%;
+    height: 7vh;
+}
+
+.donate__amount {
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.donate__input {
+    height: 10vh;
+    width: 30%;
+    font-size: 50px;
+}
+
+.donate__rupee  {
+    font-size: 50px;
+}
+</style>
 <link rel="stylesheet" href="./stylesheets/donate.css" >
 <div class="donate__container">
     <div class="donate__content">

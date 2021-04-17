@@ -13,13 +13,6 @@ const router=express.Router();
 
 //Making a connection
 
-const connection = mysql.createConnection({
-
-    host: 'localhost',
-    user: process.env.user,
-    password: process.env.password,
-    port: 3306
-});
 router.get('/',(req,res,next) => {
     res.render('./dashboard/ngo-join-form',{});
 });

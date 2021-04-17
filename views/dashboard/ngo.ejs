@@ -13,7 +13,8 @@
             <div class="ngo__data">
                <%= description %>
             </div>
-            <button class="donate__btn" type="button" style="cursor: pointer;">Donate Now</button>
+            <% let src = "/donor-user/" + mail;  %>
+            <button class="donate__btn" type="button" style="cursor: pointer;"><a href="<%= src %>"> Donate Now </a> </button>
         </div>
     </div>
 </div>

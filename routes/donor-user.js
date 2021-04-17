@@ -7,7 +7,8 @@ const jwt = require('jsonwebtoken');
 const { executeQuery, executeAndReturn } = require('../controllers/connection');
 const { makeid } = require('../controllers/utls');
  
-router.get('/', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
+  req.session.forDonation = req.params.id;
   res.render('./dashboard/donate',{});
 });
 
@@ -16,6 +17,7 @@ router.post('/', async (req,res) => {
     const ngoName = "test";
     const userEmail = req.session.userEmail;
     const ngoEmail = "12@gmail.com";
+    // const ngoEmail =  req.session.forDonation;
     const donationAmount = req.body.donation;
     const donorId = await makeid(6);
     let userInfoQuery = `SELECT * FROM ngo.user WHERE email = "${userEmail}"`;

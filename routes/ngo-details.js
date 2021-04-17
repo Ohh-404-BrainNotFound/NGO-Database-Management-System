@@ -6,17 +6,13 @@ const connectionModule  = require('../controllers/connection');
 const router= express.Router();
 require('dotenv').config();
 
-const connection = mysql.createConnection({
-
-    host: 'localhost',
-    user: process.env.user,
-    password: process.env.password,
-    port: 3306
-});
-
 router.get('/',(req,res,next) => {
-    const id=3|req.body.id;
-    let query = `SELECT * from ngo.ngo where ngo_id=${id}`;
+    // const id=3|req.body.id;
+    // const email = req.session.ngoEmail;
+    const email = '12@gmail.com'; //temp ngo mail
+    // let query = `SELECT * from ngo.ngo where ngo_id=${id}`;
+    let query = `SELECT * from ngo.ngodata where ngo_mail = "${email}" `;
+
 
 // res.render('./dashboard/ngo',{
 //     name:'NGO',
@@ -28,24 +24,26 @@ connectionModule.executeAndReturn(query).then((result)=>{
     result=result[0];
     res.render('./dashboard/ngo',{
         name:result.ngo_name,
-        description:result.details,
+        description:result.ngo_info,
+        mail: result.ngo_mail
     })
 }).catch((err)=>{throw err;})
+
 });
 router.post('/',(req,res,next) =>{
-    const id=req.body.id;
-    let query = `SELECT * from ngo.ngo where ngo_id=${id}`;
-
-// res.render('./dashboard/ngo',{
-//     name:'NGO',
-//     description:'desc',
-//     formed:'formed',
-// })
+    // const id=req.body.id;
+    const email = "12@gmail.com";
+    // let query = `SELECT * from ngo.ngo where ngo_id=${id}`;
+    let query = `SELECT * from ngo.ngodata where ngo_mail= "${email}" `;
+    
 connectionModule.executeAndReturn(query).then((result)=>{
     console.log('Result is ',result);
     res.render('./dashboard/ngo',{
-        name:result.ngo_name,
-        description:result.details,
+        name: result.ngo_name,
+        // description: result.details,
+        description: result.ngo_info,
+   
+        
     })
 }).catch((err)=>{throw err;})
 });
