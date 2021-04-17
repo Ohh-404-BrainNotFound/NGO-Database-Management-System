@@ -10,12 +10,13 @@
         <% response.forEach((data) => { %>
             <div class="ngo">
                 <div class="ngo__card">
-                    <img src="./images/ngo.png" />
+                    <% let src = "./uploads/" + data.image %> 
+                    <img class="ngo__logo" src="<%= src %>" />
                     <div class="ngo__details">
                         <h1><%= data.ngo_name %></h1>
                         <!-- ye jo Join and about button hai vo ngo.ejs wali file jisme ngo ki information dikh rahi hai waha dikenge  -->
-                        <a href="/dashboard/ngo-list/form" role="button" type="button">Join</a><br>
-                      <a href="/dashboard/ngo-list/ngo">  <button  role="button" type="button" onclick="seeNGO()" style="background-color:transparent; outline:0; border:0; cursor:pointer;">About</a><br>
+                        <a href="/dashboard/ngo-list/form" role="button" type="button"><button class="btn__join"> Join </button></a><br>
+                      <a href="/dashboard/ngo-list/ngo"> <button class="btn__join"> About </button> </a>
                     </div>
                 </div>
             </div>

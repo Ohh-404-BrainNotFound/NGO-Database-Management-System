@@ -69,16 +69,21 @@
 .donate__rupee  {
     font-size: 50px;
 }
+
+.heading {
+    color: white;
+    font-size: 50px;
+    font-family: "montserrat";
+}
+
 </style>
 <link rel="stylesheet" href="./stylesheets/donate.css" >
 <div class="donate__container">
     <div class="donate__content">
-        <div class="donate__logo">
-            <img src="./images/ngo.png" alt="ngo" />
-        </div>
+        <h1 class="heading"> Thanks for supporting us !! </h1>
         <div class="donate__info">
             <div class="donate__name">
-            <p>Stray dogs catchers</p>
+            <p><% data.ngo_name %></p>
             </div>
             <div class="donate__data">
                 <form method="Post" action="/donor-user">

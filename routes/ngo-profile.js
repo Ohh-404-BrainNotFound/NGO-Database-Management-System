@@ -32,7 +32,7 @@ router.post('/',upload.single('ngoimage') ,async (req,res)=> {
           img: fs.readFileSync(req.file.path),
           file_name: req.file.filename
         };
-        var imgQuery = `update ngo.ngodata SET image = "${ngoImage.file_name}" where email = "${req.session.ngoEmail}" `
+        var imgQuery = `update ngo.ngodata SET image = "${ngoImage.file_name}" where ngo_mail = "${req.session.ngoEmail}" `
         await execute(imgQuery)
         .then(() => {
           res.redirect('/dashboard-ngo');

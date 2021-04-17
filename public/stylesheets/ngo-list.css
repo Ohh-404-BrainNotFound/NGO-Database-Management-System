@@ -53,3 +53,20 @@
     font-size: 20px;
     font-weight: 100;
 }
+
+.ngo__logo {
+    height: 120px;
+    width: 120px;
+}
+
+.btn__join {
+    border-radius: 40px;
+    background-color: #032e57;
+    color: white;
+    font-size: 15px;
+    padding: 6px 10px;
+    border: none;
+    width: 95%;
+    height: 25%;
+    margin-top: 3vh;
+}

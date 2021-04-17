@@ -7,9 +7,13 @@ const jwt = require('jsonwebtoken');
 const { executeQuery, executeAndReturn } = require('../controllers/connection');
 const { makeid } = require('../controllers/utls');
  
-router.get('/:id', function(req, res, next) {
+router.get('/:id', async function(req, res, next) {
   req.session.forDonation = req.params.id;
-  res.render('./dashboard/donate',{});
+  let query = `select image from ngo.ngodata where ngo_mail = "${req.params.id}";`
+  await executeAndReturn(query)
+  .then((data) => {
+    res.render('./dashboard/donate',{data});
+  })
 });
 
 //below data is just for testing purpose 

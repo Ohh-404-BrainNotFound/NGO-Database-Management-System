@@ -25,7 +25,8 @@ connectionModule.executeAndReturn(query).then((result)=>{
     res.render('./dashboard/ngo',{
         name:result.ngo_name,
         description:result.ngo_info,
-        mail: result.ngo_mail
+        mail: result.ngo_mail,
+        image: result.image
     })
 }).catch((err)=>{throw err;})
 
