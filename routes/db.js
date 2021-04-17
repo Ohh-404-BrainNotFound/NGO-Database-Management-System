@@ -13,6 +13,7 @@ router.get('/', async function(req, res, next) {
             queries.map(async (query) => {
                 await executeQuery(query.query);
             });
+            res.render('frontpage',{});
         })
     })
 });
