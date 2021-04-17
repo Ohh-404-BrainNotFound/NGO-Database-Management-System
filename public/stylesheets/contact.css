@@ -91,6 +91,7 @@ p {
 	text-transform: uppercase;
 	transition: transform 80ms ease-in;
     margin-left: 140px;
+    text-decoration:none; 
 }
 
 
