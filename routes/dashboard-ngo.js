@@ -73,7 +73,7 @@ router.post('/ngo-profile/',upload.single('ngoimage') ,async (req,res)=> {
           res.redirect('/dashboard-ngo');
         }) 
     }else {
-      res.redirect('/dashboard-user');
+      res.redirect('/dashboard-ngo');
     }
     })
   })
@@ -108,8 +108,15 @@ router.get('/add-member', function(req, res, next) {
 
 router.post('/add-member' ,upload.single('member-image'), async (req,res) => {
   const email = '12@gmail.com';
-  let insertMember = `insert into ngo.ngo_member (name, ngo_mail, designation, image) values("${req.body.name}" , "${email}", "${req.body.designation}" ,"${req.file.filename}")`;
-  await executeQuery(insertMember);
+  if(req.file) {
+  var insertMember = `insert into ngo.ngo_member (name, ngo_mail, designation, image) values("${req.body.name}" , "${email}", "${req.body.designation}" ,"${req.file.filename}")`;
+  }else {
+  var insertMember = `insert into ngo.ngo_member (name, ngo_mail, designation, image) values("${req.body.name}" , "${email}", "${req.body.designation}" ,"null")`;
+  }
+  await executeQuery(insertMember)
+  .then(() =>{
+    res.redirect('/dashboard-ngo');
+  })
 })
 
 module.exports = router;

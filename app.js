@@ -55,11 +55,11 @@ app.use('/dashboard-ngo',dashboardNgo);
 app.use('/ngo',ngoRouter);
 app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
-app.use('/dashboard/ngo-list/form',ngoJoin);
+app.use('/dashboard-user/ngo-list/form',ngoJoin);
 app.use('/contact',contactRouter);
 app.use('/success',thankyouRouter);
 app.use('/db', dbGenerate);
-app.use('/dashboard/ngo-list/ngo', ngoDetails);
+app.use('/dashboard-user/ngo-list/ngo', ngoDetails);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});
