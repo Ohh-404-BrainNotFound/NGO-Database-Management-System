@@ -1,13 +1,13 @@
 <%- include('home-ngo.ejs') -%>
-<link rel="stylesheet" href="./stylesheets/TopDonor.css" >
+<link rel="stylesheet" href="/stylesheets/TopDonor.css" >
         <div class="donor_table">
                    <div class="header">
-                    <h1>  SightSavers <img class="arrow" src="./images/arrow.png" alt=""></h1>
+                    <h1>  SightSavers <img class="arrow" src="/images/arrow.png" alt=""></h1>
                     <hr class="border" />  
                    </div>
                    <% donorData.forEach((data) => { %>
                     <div class="ParentDiv" id="MainDiv">
-                        <div class="FirstDiv"> <img id="image" src="./images/T1.jpg" alt=""></div>
+                        <div class="FirstDiv"> <img id="image" src="/images/T1.jpg" alt=""></div>
                         <div class="SecondDiv"><h2><%= data.donor_name %></h2>
                         <p>
                             Member Since : 2016
