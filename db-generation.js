@@ -23,10 +23,10 @@ const dbQuery = [
             password varchar(30) not null,
             login_type varchar(10) not null,
             address varchar(125) not null,
-            regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP
+            regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
             image varchar(124) not null,
-            phoneNumber int(12) unsigned not null,
-          );"` 
+            phoneNumber int(12) unsigned not null
+          );` 
     },
     {
         "name" : "donor table",
