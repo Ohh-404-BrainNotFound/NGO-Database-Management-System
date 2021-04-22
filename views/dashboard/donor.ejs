@@ -1,8 +1,8 @@
 <%- include('home-ngo.ejs'); -%>
-    <link rel="stylesheet" href="./stylesheets/donor.css" />
+    <link rel="stylesheet" href="/stylesheets/donor.css" />
     <div class="donor_table">
         <div class="header">
-            <h1> SightSavers <img class="arrow" src="./images/arrow.png" alt=""></h1>
+            <h1> SightSavers <img class="arrow" src="/images/arrow.png" alt=""></h1>
             <hr class="border" />
 
         </div>
@@ -29,7 +29,7 @@
                 <div class="table_element">
                     <% donationData.forEach((donor) =>{ %>
                         <tr>
-                            <th class="border1"> <img class="profile_image" src="./images/T7.jpg"> <%- donor.donor_name %></th>
+                            <th class="border1"> <img class="profile_image" src="/images/T7.jpg"> <%- donor.donor_name %></th>
                             <th class="border2"><%- donor.amount %></th>
                             <th class="border2"><%- donor.regDate %></th>
                         </tr>

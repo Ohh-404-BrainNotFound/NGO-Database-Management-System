@@ -1,34 +1,32 @@
 <%- include('../partials/header.ejs') -%>
 <%- include('../chore.ejs') -%>
-<link rel="stylesheet" href="./stylesheets/dashboard.css" >
+<link rel="stylesheet" href="/stylesheets/dashboard.css" >
 <div class="dashboard__container">
     <div class="nav__container">
         <div class="administrator__details">
-            <img class="administrator__img" src="./images/profile.png" alt="profile">
+            <img class="administrator__img" src="/images/profile.png" alt="profile">
             <div class="administrator__name">
                 <p>Hello User</p>
             </div>
         </div>
         <hr class="profile__hr" />
         <div class="menu__elements">
-           <h1> <a href="/"><span><img class="arrow" src="./images/home.png" alt="arrow"></span>&emsp13;&emsp13;Home</a></h1>
+           <h1> <a href="/"><span><img class="arrow" src="/images/home.png" alt="arrow"></span>&emsp13;&emsp13;Home</a></h1>
         </div>
         <div class="menu__elements">
-            <a href="/ngo-list"><h1><span><img class="arrow" src="./images/donation.png" alt="arrow"></span>&emsp13;&emsp13;NGO's</h1></a>
+            <a href="/dashboard-user/ngo-list"><h1><span><img class="arrow" src="/images/donation.png" alt="arrow"></span>&emsp13;&emsp13;NGO's</h1></a>
         </div>
         <div class="menu__elements">
-            <a href="/donations">  <h1><span><img class="arrow" src="./images/donor.png" alt="arrow"></span>&emsp13;&emsp13;My Donations</h1></a>
+            <a href="/dashboard-user/donations">  <h1><span><img class="arrow" src="/images/donor.png" alt="arrow"></span>&emsp13;&emsp13;My Donations</h1></a>
            </div>
         <div class="menu__elements">
-        <a href="/profile"> <h1><span><img class="arrow" src="./images/spending.png" alt="arrow"></span>&emsp13;&emsp13;Update Profile</h1></a>
+        <a href="/dashboard-user/profile"> <h1><span><img class="arrow" src="/images/spending.png" alt="arrow"></span>&emsp13;&emsp13;Update Profile</h1></a>
         </div>
 
 
     </div>     
 </div>
-<div class="welcome__container">
-    Welcome User 😀
-</div>
+
 <script>
     function getname(name)
     {
