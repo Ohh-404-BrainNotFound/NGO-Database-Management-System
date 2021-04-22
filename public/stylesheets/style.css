@@ -55,11 +55,6 @@ header{
   transition: all 0.3s ease 0s;
 }
 
-
-.nav__links li a:hover {
-  color: #012342
-}
-
 .front {
   background-image: linear-gradient(to right, #012342 , #A73AA2);
   height: 100vh;

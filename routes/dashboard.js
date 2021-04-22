@@ -9,12 +9,12 @@ router.get("/",(req,res,next) => {
     name: req.session.fName,
   };
   const stringified = JSON.stringify(obj);
-  res.render('./dashboard/home-user',obj)
+  res.render('./dashboard/welcome-user',obj)
 });
 
 router.post("/",(req,res,next) => {
   const user = req.body;
-  res.render('./dashboard/home-user',{
+  res.render('./dashboard/welcome-user',{
     name:user.fName
   })
 });
