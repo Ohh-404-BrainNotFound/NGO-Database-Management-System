@@ -6,7 +6,7 @@
 .header
 {
     margin-top: 80px;
-    margin-left: 100px;
+    margin-left: 360px;
     color: white;
     font-style: italic;     
 }
@@ -40,8 +40,12 @@
     border-radius: 20px;
 }
 
-.table
-{
+.table{
+    margin-left: 50px;
+    margin-top: 10%;
+}
+
+.table__donor {
     margin-left: 50px;
 }
 

@@ -2,7 +2,8 @@ var express = require('express');
 const verify = require('../middleware/verify');
 var router = express.Router();
 const { executeAndReturn, executeQuery } = require('../controllers/connection');
-const { makeid } = require('../controllers/utls');
+const { makeid, userImageUpload } = require('../controllers/utls');
+const fs = require('fs');
 
 //Removign Get Request for Dashboard
 router.get("/",(req,res,next) => {
@@ -38,10 +39,6 @@ router.get('/donations', /*verify,*/async function(req, res, next) {
   } 
 });
 
-const utils = require('../controllers/utls');
-const upload = utils.upload;
-const fs = require('fs');
-
 router.get('/profile', async function(req, res, next) {
   let email = req.session.userEmail;
   console.log(email);
@@ -54,7 +51,7 @@ router.get('/profile', async function(req, res, next) {
   })
 });
 
-router.post('/profile',upload.single('userimage') , async (req,res)=> {
+router.post('/profile',userImageUpload.single('userimage') , async (req,res)=> {
   const {fname, lname, email, password, phoneNumber, address} = req.body;
   let query = `update ngo.user set fname = "${fname}" , lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${req.session.userEmail}" `
   await executeQuery(query)

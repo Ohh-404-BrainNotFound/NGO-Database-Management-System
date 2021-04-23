@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/TopDonor.css" >
         <div class="donor_table">
                    <div class="header">
-                    <h1>  SightSavers <img class="arrow" src="/images/arrow.png" alt=""></h1>
+                    <h1>  <%= ngoName %> <img class="arrow" src="/images/arrow.png" alt=""></h1>
                     <hr class="border" />  
                    </div>
                    <% donorData.forEach((data) => { %>
@@ -15,7 +15,7 @@
                         </div>
                         <div class="ThirdDiv"> </div>
                         <div class="FourthDiv"><p>Total Donation </p>
-                        <h2> <%= data.total_donation %></h2>
+                        <h2> &#x20B9; <%= data.total_donation %> </h2>
                         </div>
 
                     </div>
