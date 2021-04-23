@@ -25,7 +25,7 @@ const dbQuery = [
             address varchar(125) not null,
             regdate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
             image varchar(124) not null,
-            phoneNumber int(12) unsigned not null
+            phoneNumber char(12) unsigned not null
           );` 
     },
     {

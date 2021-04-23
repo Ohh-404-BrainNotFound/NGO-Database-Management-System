@@ -1,7 +1,8 @@
 const express = require('express');
-const router = express.Router();
 const { executeQuery } =  require('../controllers/connection');
 const queries = require('../db-generation');
+
+const router = express.Router();
 const createDb = `create database ngo`;
 const selectDb = `use ngo`;
 
