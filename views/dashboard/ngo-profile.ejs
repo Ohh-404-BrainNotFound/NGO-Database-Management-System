@@ -5,7 +5,7 @@
         <img src="/images/arrow.png" alt="arrow"> 
         <h1>Edit Profile</h1> 
     </div>
-    <form action="/dashboard-ngo/ngo-profile" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard-ngo/ngo-profile" method="POST" enctype="multipart/form-data" onsubmit="alert()">
     <div class="profile__section">
         <form action="/profile-ngo" method="POST" enctype="multipart/form-data" >
     <div class="profile__info">
@@ -62,6 +62,17 @@
         },500);
     }
 
+    const alert = () => {
+        swal({
+            title: "Done",
+            text: "Successfull done",
+            icon: "Success",
+        });
+        setTimeout(()=> {
+        window.location.href = '/dashboard-ngo'
+        },1000)
+    }
+
     const deleteProfile = async () => {
         const xml = new XMLHttpRequest();
         const url = "/dashboard-ngo/ngo-profile/delete";
@@ -70,7 +81,8 @@
            var ob1 = await xml.send(JSON.stringify({
                ngoEmail: email
            })
-           );       
+           );
+           alert();       
         }
 
 </script>

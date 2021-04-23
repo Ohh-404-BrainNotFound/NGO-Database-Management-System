@@ -5,7 +5,7 @@
         <img src="/images/arrow.png" alt="arrow"> 
         <h1>Edit Profile</h1> 
     </div>
-    <form action="/dashboard-user/profile" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard-user/profile" method="POST" enctype="multipart/form-data" onsubmit="alert()">
     <div class="profile__section">
     <div class="profile__info">
         <label>First name</label>
@@ -53,6 +53,16 @@
         },500);
     }
 
+    const alert = () => {
+        swal({
+            title: "Done",
+            text: "Successfully done",
+            icon: "Success",
+        });
+        setTimeout(()=> {
+        window.location.href = '/dashboard-user'
+        },10000)
+    }
     const displayImage = () => {
         console.log("ok");
         if(this.files && this.files[0]){
@@ -78,7 +88,8 @@
             var ob1 = await xml.send(JSON.stringify({
                 userEmail: email
             })
-            );       
+            );
+            alert();       
         }
    /* const updateInfo = () => {
         let updatedData = {};
