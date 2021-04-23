@@ -105,7 +105,7 @@ router.post('/donor-user', async (req,res) => {
       let userDonationQuery = `INSERT INTO ngo.donor (donor_id, donor_name, user_email, amount, ngo_name) VALUES('${donorId}','${donorName}','${userEmail}','${donationAmount}','${ngoName}')`;
       await executeQuery(userDonationQuery)
       .then(async ()=> {
-        let ngoDonationQuery = `INSERT INTO ngo.ngo_donor_record (donor_id, donor_name, ngo_id, amount, ngo_name) VALUES('${donorId}','${donorName}','${ngoEmail}','${donationAmount}','${ngoName}')`;
+        let ngoDonationQuery = `INSERT INTO ngo.ngo_donor_record (donor_id, donor_name, ngo_id, amount, ngo_name, user_email) VALUES('${donorId}','${donorName}','${ngoEmail}','${donationAmount}','${ngoName}','${userEmail}')`;
         await executeQuery(ngoDonationQuery)
         .then(()=>{
           res.redirect('/success');

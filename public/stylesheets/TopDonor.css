@@ -1,8 +1,9 @@
 body{
     background-position: center;
-    background-color: #8E3793;
-    background: -webkit-linear-gradient(to right, #837a85fa, #3e1a4d);
-	background: linear-gradient(to right, #6b03c0, #A73A7B);
+    /* background-color: #8E3793; */
+    /* background: -webkit-linear-gradient(to right, #837a85fa, #3e1a4d); */
+	/* background: linear-gradient(to right, #6b03c0, #A73A7B); */
+    background-image: linear-gradient(to right, #012342 , #A73AA2);
     background-size: cover;
 	font-family: 'Montserrat', sans-serif;
 	height: 80vh;
@@ -11,8 +12,8 @@ body{
 
 
 .donor_table {
-    margin-top: -53%;
-    margin-left: 25%;
+    margin-top: -45%;
+    margin-left: 20%;
 }
 .header
 {
