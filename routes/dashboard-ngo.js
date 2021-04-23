@@ -34,7 +34,7 @@ router.get('/donors', async function(req, res, next) {
 });
 
 router.get('/members', async function(req, res, next) {
-  let ngoMail = req.session.ngoEmail;
+  let ngoMail = req.session.ngoEmail||"12@gmail.com";
   // let ngoMail = "12@gmail.com";
   let query = `select * from ngo.ngo_member where ngo_mail = "${ngoMail}" `;
   await executeAndReturn(query)
