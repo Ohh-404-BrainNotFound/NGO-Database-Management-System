@@ -27,7 +27,10 @@ router.get('/ngo-list', async function(req, res, next) {
   await executeAndReturn(query)
   .then((response) => {
     console.log(response);
-    res.render('./dashboard/ngo-list',{response});
+    res.render('./dashboard/ngo-list',{
+      response,
+      image:response.image||'DoT.jpg'
+    });
   })
 });
 
