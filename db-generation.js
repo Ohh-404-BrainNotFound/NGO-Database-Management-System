@@ -48,8 +48,20 @@ const dbQuery = [
             ngo_id varchar(120) not null,
             amount int(125) not null,
             ngo_name varchar(125) not null,
+            user_email varchar(125),
             regDate timestamp NULL DEFAULT CURRENT_TIMESTAMP,
             constraint foreign Key(ngo_id) references ngodata(ngo_mail) on delete cascade on update cascade 
+            );`
+    },
+    {
+        "name": "ngo_member table",
+        "query": `create table ngo_member(
+            member_id int(10) primary key not null auto_increment,
+            name varchar(125)  not null,
+            ngo_mail varchar(125) not null,
+            designation varchar(125) not null,
+            image varchar(125) not null ,
+            constraint foreign key(ngo_mail) references ngodata(ngo_mail) on delete cascade on update cascade
             );`
     }
 ];

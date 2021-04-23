@@ -1,11 +1,11 @@
 <%- include('home-user.ejs') -%>
-<link rel="stylesheet" href="./stylesheets/profile.css" >
+<link rel="stylesheet" href="/stylesheets/profile.css" >
 <div class="profile__container">
     <div class="profile__name">
-        <img src="./images/arrow.png" alt="arrow"> 
+        <img src="/images/arrow.png" alt="arrow"> 
         <h1>Edit Profile</h1> 
     </div>
-    <form action="/profile" method="POST" enctype="multipart/form-data">
+    <form action="/dashboard-user/profile" method="POST" enctype="multipart/form-data" onsubmit="alert()">
     <div class="profile__section">
     <div class="profile__info">
         <label>First name</label>
@@ -28,7 +28,7 @@
         <input type="text" name="password" id="password"></input>
 
         <label> Add photo </label>
-        <input type="file" name="userimage" id="image" accept="image/*" ></input>
+        <input type="file" class="custom-file-input" style="border: none;" name="userimage" id="image" accept="image/*">
     </div>
     </div>
     <button class="btn-update">Update</button>
@@ -53,6 +53,16 @@
         },500);
     }
 
+    const alert = () => {
+        swal({
+            title: "Done",
+            text: "Successfully done",
+            icon: "Success",
+        });
+        setTimeout(()=> {
+        window.location.href = '/dashboard-user'
+        },10000)
+    }
     const displayImage = () => {
         console.log("ok");
         if(this.files && this.files[0]){
@@ -72,13 +82,14 @@
 
     const deleteProfile = async () => {
         const xml = new XMLHttpRequest();
-        const url = "/profile/delete";
+        const url = "/dashboard-user/profile/delete";
             xml.open('POST',url,true);
             await xml.setRequestHeader("content-type",'application/json');
             var ob1 = await xml.send(JSON.stringify({
                 userEmail: email
             })
-            );       
+            );
+            alert();       
         }
    /* const updateInfo = () => {
         let updatedData = {};

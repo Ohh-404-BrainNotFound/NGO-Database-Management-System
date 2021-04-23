@@ -1,10 +1,10 @@
 <%- include('home-ngo.ejs') -%>
-<link rel="stylesheet" href="./stylesheets/member.css" >
+<link rel="stylesheet" href="/stylesheets/member.css" >
 <div class="member__container">
     <% memberData.forEach((data) => { %>
         <div class="member">
             <div class="member__card">
-                <% let src = "./uploads/" + data.image %>
+                <% let src = "/uploads/" + data.image %>
                 <img src="<%- src %>" class="member__image" />
                 <div class="member__details">
                     <h1><%- data.designation %> </h1>

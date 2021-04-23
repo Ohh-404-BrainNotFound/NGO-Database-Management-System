@@ -11,26 +11,16 @@ require('dotenv').config();
 const bodyParser = require('body-parser')
 const landingRouter  = require('./routes/landing')
 const loginRouter  = require("./routes/user-login")
-const structureDb = require('./routes/createTable')
 const dashboardRouter = require('./routes/dashboard')
 const signupRouter = require('./routes/user-signup');
-const memberRouter = require('./routes/member')
-const donorRouter = require('./routes/donor')
-const ngoListRouter = require('./routes/ngo-list');
-const profileRouter  = require('./routes/profile');
 const dashboardNgo = require('./routes/dashboard-ngo');
 const ngoRouter = require('./routes/ngo');
-const donorUser = require('./routes/donor-user')
 const ngologinRouter = require('./routes/ngo-login')
 const ngoRegister = require('./routes/ngo-signup');
 const ngoJoin = require('./routes/ngoJoinForm');
 const contactRouter = require('./routes/contact');
-const ngoProfile = require('./routes/ngo-profile');
-const userDonations = require('./routes/donate-user');
 const thankyouRouter = require('./routes/success');
-const addMemberRouter = require('./routes/add-member');
 const dbGenerate = require('./routes/db');
-const topDonorRouter = require('./routes/topdonor');
 const ngoDetails = require('./routes/ngo-details');
 
 var app = express();
@@ -45,7 +35,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(express.json());
 // app.use(express.static(path.join(__dirname + '/../public')));
 // app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 app.set('views', path.join(__dirname, 'views'));
 // app.engine('html', require('ejs').renderFile);
 // app.set('view engine', 'html');
@@ -57,31 +47,19 @@ app.use(session({
   saveUninitialized: true
  }));
 
-// app.use('/', registrationRouter);
-// app.use('/', dashboardRouter);
 app.use('/',landingRouter)
 app.use('/login',loginRouter);
-app.use('/form',structureDb);
 app.use('/dashboard-user',dashboardRouter);
 app.use("/signup",signupRouter);
-app.use("/members",memberRouter);
-app.use('/donors',donorRouter);
-app.use('/ngo-list',ngoListRouter)
-app.use('/profile',profileRouter);
 app.use('/dashboard-ngo',dashboardNgo);
 app.use('/ngo',ngoRouter);
-app.use('/donor-user',donorUser);
 app.use('/ngo-login',ngologinRouter);
 app.use('/ngo-signup',ngoRegister);
-app.use('/dashboard/ngo-list/form',ngoJoin);
+app.use('/dashboard-user/ngo-list/form',ngoJoin);
 app.use('/contact',contactRouter);
-app.use('/ngo-profile',ngoProfile);
-app.use('/donations',userDonations);
 app.use('/success',thankyouRouter);
-app.use('/add-member',addMemberRouter);
 app.use('/db', dbGenerate);
-app.use('/dashboard/ngo-list/ngo', ngoDetails);
-app.use('/top-donors', topDonorRouter);
+app.use('/dashboard-user/ngo-list/ngo', ngoDetails);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});

@@ -46,6 +46,7 @@
   .nav__links {
     list-style: none;
     text-align: center;
+    font-size: 5em;
   }
   
   .nav__links li {
@@ -60,5 +61,5 @@
   
   
   .nav__links li a:hover {
-    color: #012342
+    border-bottom: 2px solid white;
   }

@@ -11,3 +11,7 @@ cp .env.example .env
 step2: fill .env with necessary credentials
 
 step3: make a get request to /db route
+
+
+minor issues to be addressed:
+- on entering wrong credentials no pop up appear with error message for both ngo and user login

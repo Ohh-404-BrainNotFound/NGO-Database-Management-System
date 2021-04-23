@@ -6,7 +6,7 @@ function seeNGO()
 
     axios.post({
         method: 'post',
-        url:'/dashboard/ngo-list/ngo',
+        url:'/dashboard-user/ngo-list/ngo',
         data:{
             id:3
         }

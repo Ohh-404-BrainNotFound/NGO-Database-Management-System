@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') -%>
-<%- include('../chore.ejs') -%>
-<style>
+<%- include('../partials/chore.ejs') -%>
+<!-- <style>
     .donate__container {
     width: 97%;
     display: flex;
@@ -76,8 +76,8 @@
     font-family: "montserrat";
 }
 
-</style>
-<link rel="stylesheet" href="./stylesheets/donate.css" >
+</style> -->
+<link rel="stylesheet" href="/stylesheets/donate.css" >
 <div class="donate__container">
     <div class="donate__content">
         <h1 class="heading"> Thanks for supporting us !! </h1>
@@ -86,7 +86,7 @@
             <p><% data.ngo_name %></p>
             </div>
             <div class="donate__data">
-                <form method="Post" action="/donor-user">
+                <form method="Post" action="/dashboard-user/donor-user">
                 <h1 class="donate__amount"> Enter a donation amount:</h1>
                 <span class="donate__rupee">&#8377;</span>
                 <input type="number" name="donation" class="donate__input"> 

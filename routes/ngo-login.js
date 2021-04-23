@@ -27,6 +27,8 @@ router.post('/', async (req, res,next) => {
       // status(200)
       // send({ auth: true, token: token });  
       // next();
+    } else {
+      res.redirect('/ngo-login');
     }
   });
 
