@@ -58,7 +58,8 @@ router.get('/ngo-profile', async function(req, res, next) {
 router.post('/ngo-profile/', ngoImageUpload.single('ngoimage') ,async (req,res)=> {
     console.log(req.file);
     const {ngo_name, govtid, bank_name, acc_no, ifsc_code, info, address, password  } = req.body;
-    let query = `update ngo.ngodata set ngo_name = "${ngo_name}" , government_id = "${govtid}",  ngo_info = "${info}", ngo_ifsccode = "${ifsc_code}", ngo_bank = "${bank_name}", ngo_account = "${acc_no}" ,ngo_password = "${password}" , ngo_address = "${address}" where ngo_mail = "${req.session.ngoEmail}" `
+    const email =req.session.ngoEmail||"ngo@gmail.com";
+    let query = `update ngo.ngodata set ngo_name = "${ngo_name}" , government_id = "${govtid}",  ngo_info = "${info}", ngo_ifsccode = "${ifsc_code}", ngo_bank = "${bank_name}", ngo_account = "${acc_no}" ,ngo_password = "${password}" , ngo_address = "${address}" where ngo_mail = "${email}" `
     await executeQuery(query)
     .then(async () => {
       if(req.file) {
