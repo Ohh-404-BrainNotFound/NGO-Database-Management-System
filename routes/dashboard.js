@@ -32,7 +32,8 @@ router.get('/ngo-list', async function(req, res, next) {
 });
 
 router.get('/donations', /*verify,*/async function(req, res, next) {
-  let userDonationsQuery = `select * from ngo.donor where user_email = "${req.session.userEmail}" `;
+  const email = req.session.userEmail||"test@gmail.com";
+  let userDonationsQuery = `select * from ngo.donor where user_email = "${email}" `;
   let donationData = await executeAndReturn(userDonationsQuery);
   if(donationData.length > 2) {
     res.render('./dashboard/donor-user',{donationData});
@@ -74,7 +75,8 @@ router.post('/profile',userImageUpload.single('userimage') , async (req,res)=> {
 })
 
 router.post('/profile/delete', async (req, res) => {
-  let deleteQuery = `delete from ngo.user where email = "${req.body.userEmail}" `;
+  const email = req.body.userEmail||"test@gmail.com";
+  let deleteQuery = `delete from ngo.user where email = "${email}" `;
   await executeQuery(deleteQuery)
   .then(() => {
     res.redirect('/dashboard-user');
@@ -93,8 +95,8 @@ router.get('/donor-user/:id', async function(req, res, next) {
 //below data is just for testing purpose 
 router.post('/donor-user', async (req,res) => {
     const ngoName = "test";
-    const userEmail = req.session.userEmail;
-    const ngoEmail = "12@gmail.com";
+    const userEmail = req.session.userEmail||"test@gmail.com";
+    const ngoEmail = "ngo@gmail.com";
     // const ngoEmail =  req.session.forDonation;
     const donationAmount = req.body.donation;
     const donorId = await makeid(6);
