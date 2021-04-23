@@ -89,8 +89,10 @@ router.post('/ngo-profile/', ngoImageUpload.single('ngoimage') ,async (req,res)=
     //for actual use
     //const ngoEmail = req.session.ngoEmail;
     //for testing purpose
-      const ngoEmail = '12@gmail.com';
-      let getMaxDonors = ` SELECT donor_name , ngo_name, sum(amount), user_email as total_donation from ngo.ngo_donor_record group by donor_name order by sum(amount) desc limit 3; `;
+      const ngoEmail = req.session.ngoEmail||'12@gmail.com';
+      //!Add below line , this is removed as a testing purpose
+      //, user_email
+      let getMaxDonors = ` SELECT donor_name , ngo_name, sum(amount) as total_donation from ngo.ngo_donor_record group by donor_name order by sum(amount) desc limit 3; `;
       await executeAndReturn(getMaxDonors)
       .then((data) => {
         console.log(data);
