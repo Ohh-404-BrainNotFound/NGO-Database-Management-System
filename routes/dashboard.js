@@ -40,9 +40,9 @@ router.get('/donations', /*verify,*/async function(req, res, next) {
 });
 
 router.get('/profile', async function(req, res, next) {
-  let email = req.session.userEmail;
+  let email = req.session.userEmail||"test@gmail.com";
   console.log(email);
-  let query = `SELECT * FROM ngo.user WHERE email = "${req.session.userEmail}" `;
+  let query = `SELECT * FROM ngo.user WHERE email = "${email}" `;
   await executeAndReturn(query)
   .then((result) => {
     const userInfo = result[0];
@@ -53,7 +53,8 @@ router.get('/profile', async function(req, res, next) {
 
 router.post('/profile',userImageUpload.single('userimage') , async (req,res)=> {
   const {fname, lname, email, password, phoneNumber, address} = req.body;
-  let query = `update ngo.user set fname = "${fname}" , lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${req.session.userEmail}" `
+  const useremail = req.session.userEmail||"test@gmail.com";
+  let query = `update ngo.user set fname = "${fname}" , lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${useremail}" `
   await executeQuery(query)
   .then(async () => {
     if(req.file) {

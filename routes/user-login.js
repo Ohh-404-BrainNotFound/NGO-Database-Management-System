@@ -12,8 +12,8 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req,res) => {
-    let emailAddress = req.body.email;
-    let password = req.body.password;
+    let emailAddress = req.body.userEmail||"test@gmail.com";
+    let password = req.body.password||"123";
     let query = `SELECT * FROM ngo.user WHERE email = "${emailAddress}" AND password = "${password}"; `;
     let userInfo = await executeAndReturn(query);
         if(userInfo.length > 0) {
@@ -21,6 +21,7 @@ router.post("/", async (req,res) => {
             console.log(userInfo);
             req.session.userEmail = emailAddress;
             req.session.fName = userInfo[0].fname;
+            console.log('Successfully Updated Data');
             /*console.log("authenticated");
             var token = jwt.sign({ mail }, process.env.secret, {
               expiresIn: 86400 // expires in 24 hours

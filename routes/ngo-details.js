@@ -9,7 +9,7 @@ require('dotenv').config();
 router.get('/',(req,res,next) => {
     // const id=3|req.body.id;
     // const email = req.session.ngoEmail;
-    const email = '12@gmail.com'; //temp ngo mail
+    const email = req.session.ngoMail||'ngo@gmail.com'; //temp ngo mail
     // let query = `SELECT * from ngo.ngo where ngo_id=${id}`;
     let query = `SELECT * from ngo.ngodata where ngo_mail = "${email}" `;
 
