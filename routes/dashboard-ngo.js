@@ -43,9 +43,10 @@ router.get('/members', async function(req, res, next) {
   });
 });
 
-router.get('/ngo-profile/', async function(req, res, next) {
-  let email = req.session.ngoEmail;
-  console.log(email);
+router.get('/ngo-profile', async function(req, res, next) {
+  //! Temporary putting the value to check if this fills the form
+  let email = await req.session.ngoEmail||"ngo@gmail.com";
+  console.log('Email is ',email);
   let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${email}" `;
   await executeAndReturn(query)
   .then((data) => {

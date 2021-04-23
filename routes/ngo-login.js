@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => {
   res.render('ngo-login');//login page name
 });
 
-router.post('/', async (req, res,next) => {
+router.post('/', async (req, res) => {
     let emailAddress = req.body.email_address;
     let password = req.body.password;
     console.log("ayya");
