@@ -5,6 +5,7 @@ const mysql = require('mysql');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const { executeAndReturn } = require('../controllers/connection');
+const swal = require('sweetalert');
 
 router.get("/", async (req, res, next) => {
     res.render('login');
@@ -26,6 +27,8 @@ router.post("/", async (req,res) => {
             });
             res.status(200).send({ auth: true, token: token });*/
             res.redirect('/dashboard-user');
+        } else {
+            res.redirect('/login');
         }
     // }
 })
