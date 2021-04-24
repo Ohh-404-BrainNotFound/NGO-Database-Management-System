@@ -31,6 +31,8 @@ node app.js
 
 headover to /db to setup data base locally
 
+![visitors](https://visitor-badge.glitch.me/badge?page_id=ngo.ngodbms)
+
 Enjoy application at http://localhost:3000
 
 
