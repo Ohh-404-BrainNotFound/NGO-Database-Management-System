@@ -112,8 +112,8 @@ router.get('/donor-user/:id', async function(req, res, next) {
 router.post('/donor-user', async (req,res) => {
     const ngoName = "test";
     const userEmail = req.session.userEmail||"test@gmail.com";
-    const ngoEmail = "ngo@gmail.com";
-    // const ngoEmail =  req.session.forDonation;
+    // const ngoEmail = "ngo@gmail.com";
+    const ngoEmail =  req.session.forDonation;
     const donationAmount = req.body.donation;
     const donorId = await makeid(6);
     let userInfoQuery = `SELECT * FROM ngo.user WHERE email = "${userEmail}"`;
