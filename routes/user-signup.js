@@ -12,8 +12,11 @@ router.get("/", (req,res)=>{
 router.post("/", register, async (req, res, next) => {
     var data = req.body;
     var sqlQuery = `INSERT INTO ngo.user (fName,lName,email,login_type,password,address,regdate,phoneNumber, image) VALUES('${data.fname}','${data.lname}','${data.email}','${data.login_type}','${data.pass}','${data.address}','${data.date}','${data.number}','test')`;
-    await execute(sqlQuery);
-    res.redirect('/');
+    await execute(sqlQuery)
+    .then(() => {
+      res.redirect('/');
+    })
+
   /*  var token = jwt.sign({ email }, process.env.secret, {
         expiresIn: 86400 // expires in 24 hours
       });
