@@ -65,3 +65,7 @@
     height: 300px;
     width: 300px;
 }
+
+#donate__btn:hover {
+    cursor: pointer;
+}

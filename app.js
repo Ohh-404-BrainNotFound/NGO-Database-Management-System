@@ -21,7 +21,6 @@ const ngoJoin = require('./routes/ngoJoinForm');
 const contactRouter = require('./routes/contact');
 const thankyouRouter = require('./routes/success');
 const dbGenerate = require('./routes/db');
-const ngoDetails = require('./routes/ngo-details');
 
 var app = express();
 
@@ -59,7 +58,6 @@ app.use('/dashboard-user/ngo-list/form',ngoJoin);
 app.use('/contact',contactRouter);
 app.use('/success',thankyouRouter);
 app.use('/db', dbGenerate);
-// app.use('/dashboard-user/ngo-list/ngo', ngoDetails);
 
 app.get('/ngo',(req,res)=>{
    res.render('./dashboard/ngo',{});

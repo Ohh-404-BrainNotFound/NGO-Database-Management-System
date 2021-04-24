@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
 }
 
 .ngo__card {
@@ -64,9 +65,15 @@
     background-color: #032e57;
     color: white;
     font-size: 15px;
-    padding: 6px 10px;
+    padding: 10px 15px;
     border: none;
     width: 95%;
     height: 25%;
     margin-top: 3vh;
+}
+
+#btn__join:hover {
+    color: #032e57;
+    background-color: aliceblue;
+    cursor: pointer;
 }

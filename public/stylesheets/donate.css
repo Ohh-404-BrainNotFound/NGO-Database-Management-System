@@ -52,6 +52,12 @@
     height: 7vh;
 }
 
+#donate__btn:hover {
+    color: #032e57;
+    cursor: pointer;
+    background-color: aliceblue;
+}
+
 .donate__amount {
     font-weight: lighter;
     font-size: 30px;
