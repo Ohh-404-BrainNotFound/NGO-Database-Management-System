@@ -16,10 +16,7 @@ router.get('/', /*verify ,*/ (req, res, next) => {
 });
 
 router.get('/donors', async function(req, res, next) {
-  //for production
-  // const ngoMail = req.session.ngEmail;
-  // for development
-  const ngoMail = '12@gmail.com';
+  const ngoMail = req.session.ngEmail;
   const getDonors = `select * from ngo.ngo_donor_record where ngo_id = "${ngoMail}" `;
   var ngoName = "";
   await executeAndReturn(getDonors)
@@ -34,8 +31,7 @@ router.get('/donors', async function(req, res, next) {
 });
 
 router.get('/members', async function(req, res, next) {
-  let ngoMail = req.session.ngoEmail||"12@gmail.com";
-  // let ngoMail = "12@gmail.com";
+  let ngoMail = req.session.ngoEmail;
   let query = `select * from ngo.ngo_member where ngo_mail = "${ngoMail}" `;
   await executeAndReturn(query)
   .then((data) => {
@@ -44,7 +40,6 @@ router.get('/members', async function(req, res, next) {
 });
 
 router.get('/ngo-profile', async function(req, res, next) {
-  //! Temporary putting the value to check if this fills the form
   let email = req.session.ngoEmail;
   console.log('Email is ',email);
   let query = `SELECT * FROM ngo.ngodata WHERE ngo_mail = "${email}" `;
@@ -58,7 +53,7 @@ router.get('/ngo-profile', async function(req, res, next) {
 router.post('/ngo-profile/', ngoImageUpload.single('ngoimage') ,async (req,res)=> {
     console.log(req.file);
     const {ngo_name, govtid, bank_name, acc_no, ifsc_code, info, address, password  } = req.body;
-    const email =req.session.ngoEmail||"ngo@gmail.com";
+    const email =req.session.ngoEmail;
     let query = `update ngo.ngodata set ngo_name = "${ngo_name}" , government_id = "${govtid}",  ngo_info = "${info}", ngo_ifsccode = "${ifsc_code}", ngo_bank = "${bank_name}", ngo_account = "${acc_no}" ,ngo_password = "${password}" , ngo_address = "${address}" where ngo_mail = "${email}" `
     await executeQuery(query)
     .then(async () => {
@@ -87,13 +82,8 @@ router.post('/ngo-profile/', ngoImageUpload.single('ngoimage') ,async (req,res)=
   })
 
   router.get('/top-donors', async function(req, res, next) {
-    //for actual use
-    //const ngoEmail = req.session.ngoEmail;
-    //for testing purpose
-      const ngoEmail = req.session.ngoEmail||'12@gmail.com';
-      //!Add below line , this is removed as a testing purpose
-      //, user_email
-      let getMaxDonors = ` SELECT donor_name , ngo_name, sum(amount) as total_donation from ngo.ngo_donor_record group by donor_name order by sum(amount) desc limit 3; `;
+      const ngoEmail = req.session.ngoEmail;
+      let getMaxDonors = ` SELECT donor_name , ngo_name, sum(amount) as total_donation from ngo.ngo_donor_record where ngo_id ="${ngoEmail}" group by donor_name order by sum(amount) desc limit 3; `;
       await executeAndReturn(getMaxDonors)
       .then((data) => {
         console.log(data);
@@ -108,7 +98,7 @@ router.get('/add-member', function(req, res, next) {
 });
 
 router.post('/add-member' ,ngoMemberImageUpload.single('member-image'), async (req,res) => {
-  const email = '12@gmail.com';
+  const email = req.session.ngoEmail; ;
   if(req.file) {
   var insertMember = `insert into ngo.ngo_member (name, ngo_mail, designation, image) values("${req.body.name}" , "${email}", "${req.body.designation}" ,"${req.file.filename}")`;
   }else {

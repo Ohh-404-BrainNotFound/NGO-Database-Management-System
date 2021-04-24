@@ -10,7 +10,7 @@
         <% response.forEach((data) => { %>
             <div class="ngo">
                 <div class="ngo__card">
-                    <% let src = "/uploads/" + image %> 
+                    <% let src = "/uploads/" + data.image %> 
                     <img class="ngo__logo" src="<%= src %>" />
                     <div class="ngo__details">
                         <h1><%= data.ngo_name %></h1>

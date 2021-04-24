@@ -29,7 +29,7 @@ router.get('/ngo-list', async function(req, res, next) {
     console.log(response);
     res.render('./dashboard/ngo-list',{
       response,
-      image:response.image||'DoT.jpg'
+      image:response.image
     });
   })
 });
@@ -48,7 +48,7 @@ router.get('/ngo-list/ngo/:id' ,(req, res) => {
 })
 
 router.get('/donations', /*verify,*/async function(req, res, next) {
-  const email = req.session.userEmail||"test@gmail.com";
+  const email = req.session.userEmail;
   let userDonationsQuery = `select * from ngo.donor where user_email = "${email}" `;
   let donationData = await executeAndReturn(userDonationsQuery);
   if(donationData.length > 2) {
@@ -57,7 +57,7 @@ router.get('/donations', /*verify,*/async function(req, res, next) {
 });
 
 router.get('/profile', async function(req, res, next) {
-  let email = req.session.userEmail||"test@gmail.com";
+  let email = req.session.userEmail;
   console.log(email);
   let query = `SELECT * FROM ngo.user WHERE email = "${email}" `;
   await executeAndReturn(query)
@@ -70,7 +70,7 @@ router.get('/profile', async function(req, res, next) {
 
 router.post('/profile',userImageUpload.single('userimage') , async (req,res)=> {
   const {fname, lname, email, password, phoneNumber, address} = req.body;
-  const useremail = req.session.userEmail||"test@gmail.com";
+  const useremail = req.session.userEmail;
   let query = `update ngo.user set fname = "${fname}" , lname = "${lname}"  , password = "${password}" , phoneNumber = "${phoneNumber}" , address = "${address}" where email = "${useremail}" `
   await executeQuery(query)
   .then(async () => {
@@ -91,7 +91,7 @@ router.post('/profile',userImageUpload.single('userimage') , async (req,res)=> {
 })
 
 router.post('/profile/delete', async (req, res) => {
-  const email = req.body.userEmail||"test@gmail.com";
+  const email = req.body.userEmail;
   let deleteQuery = `delete from ngo.user where email = "${email}" `;
   await executeQuery(deleteQuery)
   .then(() => {
@@ -110,8 +110,8 @@ router.get('/donor-user/:id', async function(req, res, next) {
 
 //below data is just for testing purpose 
 router.post('/donor-user', async (req,res) => {
-    const ngoName = "test";
-    const userEmail = req.session.userEmail||"test@gmail.com";
+    const ngoName = req.session.ngoName
+    const userEmail = req.session.userEmail;
     // const ngoEmail = "ngo@gmail.com";
     const ngoEmail =  req.session.forDonation;
     const donationAmount = req.body.donation;

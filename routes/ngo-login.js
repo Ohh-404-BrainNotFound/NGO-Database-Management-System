@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
     if(ngoInfo.length > 0) {
       req.session.isNgoLoggedIn = true;
       req.session.ngoEmail = emailAddress;
+      req.session.ngoName = ngoInfo[0].ngo_name;
       console.log("authenticated");
       res.redirect('/dashboard-ngo');
       // var token = jwt.sign({ emailAddress }, process.env.secret, {

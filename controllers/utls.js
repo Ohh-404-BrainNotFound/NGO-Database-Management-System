@@ -12,7 +12,7 @@ var userImageStorage = multer.diskStorage({
     filename: function (req, file, cb) {
       var regex = new RegExp('[^.]+$');
       let extension = file.originalname.match(regex);
-      cb(null, req.session.userEmail + "." + extension)
+      cb(null, file.originalname + "." + extension)
     }
   })
 
@@ -28,7 +28,7 @@ var ngoImageStorage = multer.diskStorage({
     filename: function (req, file, cb) {
       var regex = new RegExp('[^.]+$');
       let extension = file.originalname.match(regex);
-      cb(null, req.session.ngoEmail + "." + extension)
+      cb(null, file.originalname + "." + extension)
     }
 })
 

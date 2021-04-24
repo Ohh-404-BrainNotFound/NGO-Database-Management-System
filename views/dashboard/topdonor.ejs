@@ -1,16 +1,10 @@
 <%- include('home-ngo.ejs') -%>
 <link rel="stylesheet" href="/stylesheets/TopDonor.css" >
         <div class="donor_table">
-                  
+                  <% var i=0; %>
                    <% donorData.forEach((data) => { %>
                     <div class="ParentDiv" id="MainDiv">
-                        <% if(data.user_email) {%>
-                            <% let location = "/uploads/" + data.user_email; %> 
-                        <div class="FirstDiv"> <img id="image" src="<%= location %>" alt=""></div>
-                        <% } else { %>
-                        <div class="FirstDiv"> <img id="image" src="/images/T1.jpg" alt=""></div>
-                        <% } %>
-                        <div class="SecondDiv"><h2><%= data.donor_name %></h2>
+                        <div class="SecondDiv"><h2> &#129351; <%= data.donor_name %></h2>
                         <p>
                             Champion donor
                         </p>
@@ -21,6 +15,7 @@
                         </div>
 
                     </div>
+                    <% i = i+1; %>
                    <% }) %>
             
          </div>       
