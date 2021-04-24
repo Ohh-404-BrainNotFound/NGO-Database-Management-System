@@ -16,6 +16,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-top: 5%;
 }
 
 .ngo__content {
@@ -25,20 +26,27 @@
 
 .ngo__info {
     display: flex;
-    height: 40vh;
     justify-content: space-evenly;
     flex-direction: column;
+    margin-top: 5%;
+    color: white;
+}
+
+.ngo__info > h1 {
+  color: white;
 }
 
 .ngo__name {
     font-size: 25px;
     color: white;
     float: left;
+    margin-top: 2%;
 }
 
 .ngo__data {
     color: white;
     font-size: 20px;
+    margin-top: 2%;
 }
 
 .donate__btn {
@@ -50,6 +58,7 @@
     border: none;
     width: 15%;
     height: 7vh;
+    margin-top: 2%;
 }
 
 .ngo__image {

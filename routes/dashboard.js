@@ -34,6 +34,19 @@ router.get('/ngo-list', async function(req, res, next) {
   })
 });
 
+router.get('/ngo-list/ngo/:id' ,(req, res) => {
+    const email = req.params.id;
+    console.log(email);
+    let query = `SELECT * from ngo.ngodata where ngo_mail = "${email}" `;
+    executeAndReturn(query)
+    .then((result)=>{
+      console.log(result[0]);
+    res.render('./dashboard/ngo',{
+      result: result[0]
+    })
+  }).catch((err)=>{throw err;})
+})
+
 router.get('/donations', /*verify,*/async function(req, res, next) {
   const email = req.session.userEmail||"test@gmail.com";
   let userDonationsQuery = `select * from ngo.donor where user_email = "${email}" `;

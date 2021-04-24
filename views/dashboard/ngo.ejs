@@ -3,18 +3,20 @@
 <link rel="stylesheet" href="/stylesheets/ngo.css" >
 <div class="ngo__container" style="display: flex; justify-content:center; align-items:center;">
     <div class="ngo__content">
-        <!-- <div class="ngo__logo">
-            <% let location = "../uploads/" + image %>
+         <div class="ngo__logo">
+            <% let location = "/uploads/" + result.image %>
             <img src="<%= location %>" class="ngo__image" alt="ngo" />
-        </div> -->
+        </div> 
         <div class="ngo__info">
             <div class="ngo__name">
-            <p><%= name %></p>
+                <h1>Name: </h1>
+            <p><%= result.ngo_name %></p>
             </div>
             <div class="ngo__data">
-               <%= description %>
+            <h1>About Ngo</h1>
+               <%= result.ngo_info %>
             </div>
-            <% let src = "/dashboard-user/donor-user/" + mail;  %>
+            <% let src = "/dashboard-user/donor-user/" + result.ngo_mail;  %>
             <button class="donate__btn" type="button" style="cursor: pointer;"><a href="<%= src %>"> Donate Now </a> </button>
         </div>
     </div>

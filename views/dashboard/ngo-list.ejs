@@ -190,14 +190,29 @@
                     <div class="ngo__details">
                         <h1><%= data.ngo_name %></h1>
                         <!-- ye jo Join and about button hai vo ngo.ejs wali file jisme ngo ki information dikh rahi hai waha dikenge  -->
+                       
                         <a href="/dashboard-user/ngo-list/form" role="button" type="button"><button class="btn__join"> Join </button></a><br>
-                      <a href="/dashboard-user/ngo-list/ngo"> <button class="btn__join"> About </button> </a>
+                        <% let loc = "/dashboard-user/ngo-list/ngo/" + data.ngo_mail; %>
+                      <a href="<%= loc %>"> <button class="btn__join"  > About </button> </a>
                     </div>
                 </div>
             </div>
         <% }) %>
     </div>
 <script>
+    const setNgo = async (ngoMail) => {
+        var xhr = new XMLHttpRequest();
+        console.log("hello")
+        console.log(ngoMail);
+        let url = '/dashboard-user/ngo-list/ngo/' + ngoMail;
+        xhr.open('GET', url , true);
+        await xhr.setRequestHeader('Content-Type', 'application/json');
+        var resp = await xhr.send(
+            JSON.stringify({
+                ngoEmail: ngoMail
+            })
+        );
+    }; 
     // function seeNGO() {
     // let xhr =new XMLHttpRequest();
     // xhr.open('GET','/dashboard/ngo-list/ngo',true);
