@@ -12,11 +12,15 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req,res) => {
-    let emailAddress = req.body.userEmail||"test@gmail.com";
-    let password = req.body.password||"123";
+    // let emailAddress = req.body.userEmail ||"test@gmail.com";
+    // let password = req.body.password ||"123";
+    let emailAddress = req.body.email;
+    let password = req.body.password;
+    console.log(emailAddress +"sdssds" + password);
     let query = `SELECT * FROM ngo.user WHERE email = "${emailAddress}" AND password = "${password}"; `;
     let userInfo = await executeAndReturn(query);
         if(userInfo.length > 0) {
+            console.log(userInfo);
             req.session.isUserLoggedIn = true;
             console.log(userInfo);
             req.session.userEmail = emailAddress;
@@ -29,6 +33,7 @@ router.post("/", async (req,res) => {
             res.status(200).send({ auth: true, token: token });*/
             res.redirect('/dashboard-user');
         } else {
+            console.log(userInfo);
             res.redirect('/login');
         }
     // }
