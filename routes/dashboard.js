@@ -41,6 +41,7 @@ router.get('/ngo-list/ngo/:id' ,(req, res) => {
     executeAndReturn(query)
     .then((result)=>{
       console.log(result[0]);
+      req.session.ngoName = result[0].ngo_name;
     res.render('./dashboard/ngo',{
       result: result[0]
     })
@@ -110,7 +111,7 @@ router.get('/donor-user/:id', async function(req, res, next) {
 
 //below data is just for testing purpose 
 router.post('/donor-user', async (req,res) => {
-    const ngoName = req.session.ngoName
+    const ngoName = req.session.ngoName;
     const userEmail = req.session.userEmail;
     // const ngoEmail = "ngo@gmail.com";
     const ngoEmail =  req.session.forDonation;

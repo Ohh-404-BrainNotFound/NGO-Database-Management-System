@@ -16,7 +16,7 @@ router.get('/', /*verify ,*/ (req, res, next) => {
 });
 
 router.get('/donors', async function(req, res, next) {
-  const ngoMail = req.session.ngEmail;
+  const ngoMail = req.session.ngoEmail;
   const getDonors = `select * from ngo.ngo_donor_record where ngo_id = "${ngoMail}" `;
   var ngoName = "";
   await executeAndReturn(getDonors)
